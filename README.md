@@ -114,7 +114,7 @@ Here are some common issues that you might encounter with potential solution sug
 These are indicative however, and you might need to search deeper on each issue.
 
 1. The project seems freeze upon start, not receiving any connections, and just giving me a warning.
-*Suggestion:* Make sure that `mongodb` service has started, and that the `.env` file you use is for local use and not CI. The default `.env` file is for CI use, so if you want to run and test your application locally, you need to rename `.env` (e.g., to `.env.ci`) and consecutively, also rename `.env.local` to `.env`. You can also setup `.gitignore` so that you don't push the local file to your repo as well.
+*Suggestion:* Make sure that `mongodb` service has started, and that the `.env` file you use is for local use and not CI. The default `.env` file is for CI use, so if you want to run and test your application locally, you need to rename `.env` (e.g., to `.env.ci`) and consecutively, also rename `.env.local` to `.env`. You can also setup `.gitignore` so that you don't push the local file to your repo as well. You can also determine which file is for which usage, by checking the `NOTE` field in each file.
 2. When running the project on GitLab CI, it tells me that address `3000`, `27017`, or any other, is in use.
 *Suggestion:* If you setup your runner in the same machine with your local development, make sure that the ports of the applications that you use locally do not interfere with the CI runs, as the runner essentially will run the tests on your machine.
 3. The CI gives me a 4XX error - e.g., 409.

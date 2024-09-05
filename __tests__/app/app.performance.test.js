@@ -18,6 +18,7 @@ describe("Testing Routes with different time thresholds.", () => {
 
   it("Get / in 100ms", async () => {
     const response = await axios.get(prepare("/"));
+    console.log("TEEEEEST");
     expect(response.status).toEqual(200);
   }, 100);
 });

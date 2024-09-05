@@ -36,6 +36,5 @@ module.exports = async () => {
     "password": "12345",
     "address": "Somewhere 10"
   });
-
-
 };
+

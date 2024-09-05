@@ -100,8 +100,9 @@ In order to setup the application for Continuous Integration tests execution (wh
 
 1. Clone the project to a new Gitlab repository.
 2. Enable CI/CD in your project. You can find directions [here](https://docs.gitlab.com/ee/ci/enable_or_disable_ci.html).
-3. Register a Gitlab Runner in a machine you wish to run it. Once again, you can follow the instructions provided in the [official Gitlab documentation](https://docs.gitlab.com/runner/register/).
-4. Grant elevated permissions to the runner by modifying the `config.toml` file and setting `privileged = true` and `volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]`. An indicated location for the runner is `/etc/gitlab-runner`.
+3. Register a Gitlab Runner in a machine you wish to run it. Once again, you can follow the instructions provided in the [official Gitlab documentation](https://docs.gitlab.com/runner/register/). When prompted to insert image for the runner, insert `docker`.
+4. Grant elevated permissions to the runner by modifying the `config.toml` file and setting `privileged = true` and `volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]`. An indicated location for the runner is `/etc/
+-runner`.
 5. Install Docker and Docker Compose ([instructions here](https://docs.docker.com/engine/install/)) in that same machine, and set their permissions so that they can run without sudo command - so that they can be utilized by the CI pipeline on the runner.
 6. Start gitlab runner by running `sudo gitlab-runner start`.
 7. Setup a local docker network on your device, with the name "mynetwork". You can do so by running `docker network create mynetwork`. This is crucial, as otherwise your docker components will not be able to communicate each other.

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
+
 const { User } = require("../../models/user");
 const { Order } = require("../../models/order");
 

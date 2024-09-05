@@ -1,6 +1,9 @@
 const axios = require("axios");
 const {prepare}  = require("./test-helper")
 
+const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
+
 module.exports = async () => {
   // We use the API to register.
   // Alternatively, you can do it by using Mongoose API,

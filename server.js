@@ -33,4 +33,6 @@ const start = async () => {
   }
 };
 
+mongoose.set('strictQuery', true);
+
 start();

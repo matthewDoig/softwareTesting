@@ -128,5 +128,5 @@ These are indicative however, and you might need to search deeper on each issue.
 7. My CI pipeline step seems to have failed.
 *Suggestion:* Using Gitlab CI pipeline interface, you can open the necessary step and read about the cause of failure.
 
-**Disclaimer: This project is provided ​“AS IS”. The developer makes no other warranties, express or implied, and hereby disclaims all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose. The project is provided solely for educational purposes, and are no guarantees that it is fault-free, despite the best of efforts and intentions of the developer to provide a comprehensive and stable work.**
+**Disclaimer: This software is provided "as-is", with no guarantees. The developer makes no other warranties, express or implied, and hereby disclaims all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose. The project is provided for educational purposes, and are no guarantees of any kind  that it is fault-free, despite the best of efforts and intentions of its developer to provide a comprehensive and stable result.**
 

@@ -17,5 +17,6 @@ module.exports = async () => {
   });
   await Order.deleteMany({description: /\{Test\sOrder/});
 
-  await mongoose.connection.close(); 
+  await mongoose.connection.close();
 }
+

@@ -126,7 +126,7 @@ These are indicative however, and you might need to search deeper on each issue.
 6. I cannot find the `config.toml` file.
 *Suggestion:* Given your configuration (e.g., if you installed the runner with `sudo`), locations might vary. Check [this SO question](https://stackoverflow.com/questions/72269656/gitlab-runner-configuration-not-showing-in-config-toml) for more info.
 7. My CI pipeline step seems to have failed.
-*Suggestion:* Using Gitlab CI pipeline interface, you can open the necessary step and read about the cause of failure.
+*Suggestion:* Using Gitlab CI pipeline interface, you can open the step you want, check all console output and read about the cause of the failure.
 
 **Disclaimer: This software is provided "as-is", with no guarantees. The developer makes no other warranties, express or implied, and hereby disclaims all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose. The project is provided for educational purposes, and are no guarantees of any kind  that it is fault-free, despite the best of efforts and intentions of its developer to provide a comprehensive and stable result.**
 

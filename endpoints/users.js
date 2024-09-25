@@ -188,6 +188,11 @@ module.exports = (app) => {
     try {
       const userFound = await User.findOne({ _id: req.user.id });
       if(userFound) {
+      	if ("role" in req.body) {
+      	  return res.status(403).json({
+            "message": "Unauthorized Request. Users cannot change their role."
+          });
+      	}
         const updatedUser = await User.findByIdAndUpdate(req.user.id, req.body, {"new": true});
         return res.status(201).json(updatedUser);
       } else {

@@ -45,6 +45,14 @@ describe("Simple User Tests", () => {
     const {data} = response;
     expect(data.name).toEqual("Updated User");
   });
+  
+    it("should not update user role", async () => {
+    await axios.put(prepare("/me"), {
+      "role": "Admin"
+    }, simpleConfig).catch(error => {
+      expect(error.response.status).toEqual(403);
+    });
+  });
 
   it("should fail updating credentials of another user", async () => {
     expect(true).toEqual(true);

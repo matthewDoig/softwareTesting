@@ -4,7 +4,7 @@
 
 The project exposes an API related to operations regarding User registration, authentication and usage, allowing a simple order placement of predefined boxes of an imaginary food shop under a limited amount of choices (`Box1` and `Box2`). The system also poses different user access levels (`Admin` and `User`), with elevated permissions to the administrator and respective restrictions to the simple user.
 
-The project is written in JavaScript (utilizing some of ES6 such as destructuring and `async/await` instead of promises, while keeping some of CommonJS traits, such as module loading via `require`), utilizing `Node.js` engine. In addition, `MongoDB` is utilized for the Database, and `Mongoose` package is utilized for usage in the project (DB schema definition, CRUD operations).
+The project is written in JavaScript (utilizing some of ES6 features such as destructuring and `async/await` instead of promises, while keeping some of CommonJS traits, such as module loading via `require`), utilizing `Node.js` engine. In addition, `MongoDB` is utilized for the Database, and `Mongoose` package is utilized for usage in the project (DB schema definition, CRUD operations).
 
 The system utilizes `JWT` for authentication and `Bcrypt` for password encryption.
 The system utilizes `Express` package for API buildup. 

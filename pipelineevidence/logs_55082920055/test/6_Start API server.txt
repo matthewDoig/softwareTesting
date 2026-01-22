@@ -1,0 +1,14 @@
+﻿2026-01-22T10:34:59.0885165Z ##[group]Run node server.js &
+2026-01-22T10:34:59.0885469Z [36;1mnode server.js &[0m
+2026-01-22T10:34:59.0885686Z [36;1mecho $! > server.pid[0m
+2026-01-22T10:34:59.0885896Z [36;1msleep 2[0m
+2026-01-22T10:34:59.0918186Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:34:59.0918607Z env:
+2026-01-22T10:34:59.0918763Z   NODE_ENV: test
+2026-01-22T10:34:59.0919030Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:34:59.0919327Z ##[endgroup]
+2026-01-22T10:34:59.3873015Z [dotenv@17.2.3] injecting env (7) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+2026-01-22T10:34:59.4179664Z [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2026-01-22T10:34:59.4273933Z [dotenv@17.2.3] injecting env (0) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+2026-01-22T10:34:59.4285791Z [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+2026-01-22T10:34:59.4550774Z Server started on port 3000.

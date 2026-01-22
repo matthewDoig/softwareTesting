@@ -1,0 +1,7 @@
+﻿2026-01-22T10:35:09.3681587Z ##[group]Run if [ -f server.pid ]; then kill $(cat server.pid) || true; fi
+2026-01-22T10:35:09.3682129Z [36;1mif [ -f server.pid ]; then kill $(cat server.pid) || true; fi[0m
+2026-01-22T10:35:09.3715133Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:35:09.3715445Z env:
+2026-01-22T10:35:09.3715603Z   NODE_ENV: test
+2026-01-22T10:35:09.3715877Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:35:09.3716184Z ##[endgroup]

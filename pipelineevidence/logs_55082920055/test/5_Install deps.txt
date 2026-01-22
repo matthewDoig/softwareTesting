@@ -1,0 +1,382 @@
+﻿2026-01-22T10:34:33.2826645Z ##[group]Run npm ci
+2026-01-22T10:34:33.2826918Z [36;1mnpm ci[0m
+2026-01-22T10:34:33.2864360Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:34:33.2864608Z env:
+2026-01-22T10:34:33.2864769Z   NODE_ENV: test
+2026-01-22T10:34:33.2865040Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:34:33.2865349Z ##[endgroup]
+2026-01-22T10:34:34.5048818Z npm warn ERESOLVE overriding peer dependency
+2026-01-22T10:34:34.5049768Z npm warn While resolving: @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5050471Z npm warn Found: @opentelemetry/api@1.4.1
+2026-01-22T10:34:34.5051056Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5051930Z npm warn   @opentelemetry/api@"^1.0.0" from @opentelemetry/api-logs@0.41.2
+2026-01-22T10:34:34.5052747Z npm warn   node_modules/@opentelemetry/api-logs
+2026-01-22T10:34:34.5053696Z npm warn     @opentelemetry/api-logs@"0.41.2" from @opentelemetry/otlp-transformer@0.41.2
+2026-01-22T10:34:34.5054657Z npm warn     node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5055410Z npm warn     1 more (@opentelemetry/sdk-logs)
+2026-01-22T10:34:34.5056145Z npm warn   55 more (@opentelemetry/context-async-hooks, ...)
+2026-01-22T10:34:34.5056690Z npm warn
+2026-01-22T10:34:34.5057089Z npm warn Could not resolve dependency:
+2026-01-22T10:34:34.5058012Z npm warn peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5059572Z npm warn node_modules/@opentelemetry/exporter-metrics-otlp-proto/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5061073Z npm warn   @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/exporter-metrics-otlp-proto@0.205.0
+2026-01-22T10:34:34.5062555Z npm warn   node_modules/@opentelemetry/exporter-metrics-otlp-proto
+2026-01-22T10:34:34.5063696Z npm warn   2 more (@opentelemetry/exporter-metrics-otlp-http, @opentelemetry/otlp-transformer)
+2026-01-22T10:34:34.5064479Z npm warn
+2026-01-22T10:34:34.5065056Z npm warn Conflicting peer dependency: @opentelemetry/api@1.9.0
+2026-01-22T10:34:34.5065754Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5066691Z npm warn   peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5068070Z npm warn   node_modules/@opentelemetry/exporter-metrics-otlp-proto/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5069710Z npm warn     @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/exporter-metrics-otlp-proto@0.205.0
+2026-01-22T10:34:34.5070830Z npm warn     node_modules/@opentelemetry/exporter-metrics-otlp-proto
+2026-01-22T10:34:34.5071963Z npm warn     2 more (@opentelemetry/exporter-metrics-otlp-http, @opentelemetry/otlp-transformer)
+2026-01-22T10:34:34.5280466Z npm warn ERESOLVE overriding peer dependency
+2026-01-22T10:34:34.5281610Z npm warn While resolving: @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5283873Z npm warn Found: @opentelemetry/api@1.4.1
+2026-01-22T10:34:34.5284558Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5285423Z npm warn   @opentelemetry/api@"^1.0.0" from @opentelemetry/api-logs@0.41.2
+2026-01-22T10:34:34.5286320Z npm warn   node_modules/@opentelemetry/api-logs
+2026-01-22T10:34:34.5287325Z npm warn     @opentelemetry/api-logs@"0.41.2" from @opentelemetry/otlp-transformer@0.41.2
+2026-01-22T10:34:34.5288586Z npm warn     node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5289375Z npm warn     1 more (@opentelemetry/sdk-logs)
+2026-01-22T10:34:34.5290164Z npm warn   55 more (@opentelemetry/context-async-hooks, ...)
+2026-01-22T10:34:34.5290746Z npm warn
+2026-01-22T10:34:34.5291181Z npm warn Could not resolve dependency:
+2026-01-22T10:34:34.5292134Z npm warn peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5294020Z npm warn node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5295850Z npm warn   @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/otlp-transformer@0.205.0
+2026-01-22T10:34:34.5298027Z npm warn   node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5299196Z npm warn
+2026-01-22T10:34:34.5299832Z npm warn Conflicting peer dependency: @opentelemetry/api@1.9.0
+2026-01-22T10:34:34.5300568Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5301549Z npm warn   peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5303445Z npm warn   node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5305280Z npm warn     @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/otlp-transformer@0.205.0
+2026-01-22T10:34:34.5306841Z npm warn     node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5308011Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5309078Z npm warn EBADENGINE   package: '@aws-sdk/client-cloudwatch@3.972.0',
+2026-01-22T10:34:34.5310006Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5310888Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5311558Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5312085Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5312965Z npm warn EBADENGINE   package: '@aws-sdk/client-cloudwatch-logs@3.972.0',
+2026-01-22T10:34:34.5313871Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5314698Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5315349Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5316193Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5317087Z npm warn EBADENGINE   package: '@aws-sdk/client-cognito-identity@3.972.0',
+2026-01-22T10:34:34.5318014Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5319119Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5319883Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5320394Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5321166Z npm warn EBADENGINE   package: '@aws-sdk/client-ec2@3.973.0',
+2026-01-22T10:34:34.5321977Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5322830Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5323499Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5324004Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5324776Z npm warn EBADENGINE   package: '@aws-sdk/client-ecs@3.972.0',
+2026-01-22T10:34:34.5325596Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5326447Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5327113Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5327638Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5328614Z npm warn EBADENGINE   package: '@aws-sdk/client-iam@3.972.0',
+2026-01-22T10:34:34.5329451Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5330310Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5330980Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5331494Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5332276Z npm warn EBADENGINE   package: '@aws-sdk/client-lambda@3.972.0',
+2026-01-22T10:34:34.5333109Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5333958Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5334608Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5335121Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5335887Z npm warn EBADENGINE   package: '@aws-sdk/client-s3@3.972.0',
+2026-01-22T10:34:34.5336696Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5337559Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5338213Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5338913Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5339983Z npm warn EBADENGINE   package: '@aws-sdk/client-sqs@3.972.0',
+2026-01-22T10:34:34.5340823Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5341870Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5342533Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5343045Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5343811Z npm warn EBADENGINE   package: '@aws-sdk/client-ssm@3.972.0',
+2026-01-22T10:34:34.5344621Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5345460Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5346136Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5346686Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5347457Z npm warn EBADENGINE   package: '@aws-sdk/client-sso@3.972.0',
+2026-01-22T10:34:34.5348274Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5349316Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5349921Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5350420Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5351187Z npm warn EBADENGINE   package: '@aws-sdk/client-sts@3.972.0',
+2026-01-22T10:34:34.5352008Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5352858Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5353520Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5354029Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5354757Z npm warn EBADENGINE   package: '@aws-sdk/core@3.972.0',
+2026-01-22T10:34:34.5355802Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5356624Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5357281Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5357777Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5358739Z npm warn EBADENGINE   package: '@aws-sdk/crc64-nvme@3.972.0',
+2026-01-22T10:34:34.5359554Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5360409Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5361073Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5361573Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5362577Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-cognito-identity@3.972.0',
+2026-01-22T10:34:34.5363616Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5364498Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5365183Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5365710Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5366596Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-env@3.972.0',
+2026-01-22T10:34:34.5367527Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5368565Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5369272Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5369796Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5370693Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-http@3.972.0',
+2026-01-22T10:34:34.5371652Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5372559Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5373235Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5373816Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5374702Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-ini@3.972.0',
+2026-01-22T10:34:34.5375639Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5376522Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5377195Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5377701Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5378943Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-login@3.972.0',
+2026-01-22T10:34:34.5380162Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5381028Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5381690Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5382203Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5383094Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-node@3.972.0',
+2026-01-22T10:34:34.5384015Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5384866Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5385527Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5386046Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5386962Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-process@3.972.0',
+2026-01-22T10:34:34.5387904Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5388956Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5389644Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5390148Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5391014Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-sso@3.972.0',
+2026-01-22T10:34:34.5391921Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5392753Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5393440Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5393908Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5394843Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-web-identity@3.972.0',
+2026-01-22T10:34:34.5395797Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5396870Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5397553Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5398044Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5399082Z npm warn EBADENGINE   package: '@aws-sdk/credential-providers@3.972.0',
+2026-01-22T10:34:34.5399968Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5400767Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5401388Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5401879Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5402735Z npm warn EBADENGINE   package: '@aws-sdk/middleware-bucket-endpoint@3.972.0',
+2026-01-22T10:34:34.5403649Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5404465Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5405101Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5405594Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5406465Z npm warn EBADENGINE   package: '@aws-sdk/middleware-expect-continue@3.972.0',
+2026-01-22T10:34:34.5407367Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5408186Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5408998Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5409500Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5410393Z npm warn EBADENGINE   package: '@aws-sdk/middleware-flexible-checksums@3.972.0',
+2026-01-22T10:34:34.5411296Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5412108Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5412730Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5413235Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5414077Z npm warn EBADENGINE   package: '@aws-sdk/middleware-host-header@3.972.0',
+2026-01-22T10:34:34.5414919Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5415730Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5416344Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5416846Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5417747Z npm warn EBADENGINE   package: '@aws-sdk/middleware-location-constraint@3.972.0',
+2026-01-22T10:34:34.5419143Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5419981Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5420626Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5421178Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5422022Z npm warn EBADENGINE   package: '@aws-sdk/middleware-logger@3.972.0',
+2026-01-22T10:34:34.5422901Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5423746Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5424384Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5424888Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5425825Z npm warn EBADENGINE   package: '@aws-sdk/middleware-recursion-detection@3.972.0',
+2026-01-22T10:34:34.5426797Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5427633Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5428251Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5428930Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5429754Z npm warn EBADENGINE   package: '@aws-sdk/middleware-sdk-ec2@3.972.0',
+2026-01-22T10:34:34.5430605Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5431460Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5432105Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5432620Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5433444Z npm warn EBADENGINE   package: '@aws-sdk/middleware-sdk-s3@3.972.0',
+2026-01-22T10:34:34.5434293Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5435382Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5436047Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5436555Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5437398Z npm warn EBADENGINE   package: '@aws-sdk/middleware-sdk-sqs@3.972.0',
+2026-01-22T10:34:34.5438271Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5439358Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5439998Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5440532Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5441335Z npm warn EBADENGINE   package: '@aws-sdk/middleware-ssec@3.972.0',
+2026-01-22T10:34:34.5442152Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5442969Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5443615Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5444101Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5444943Z npm warn EBADENGINE   package: '@aws-sdk/middleware-user-agent@3.972.0',
+2026-01-22T10:34:34.5445821Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5446641Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5447261Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5447749Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5448730Z npm warn EBADENGINE   package: '@aws-sdk/nested-clients@3.972.0',
+2026-01-22T10:34:34.5449553Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5450371Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5451008Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5451565Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5452399Z npm warn EBADENGINE   package: '@aws-sdk/region-config-resolver@3.972.0',
+2026-01-22T10:34:34.5453265Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5454066Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5454704Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5455186Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5456091Z npm warn EBADENGINE   package: '@aws-sdk/signature-v4-multi-region@3.972.0',
+2026-01-22T10:34:34.5456981Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5457793Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5458857Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5459361Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5460139Z npm warn EBADENGINE   package: '@aws-sdk/token-providers@3.972.0',
+2026-01-22T10:34:34.5460945Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5461776Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5462402Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5462886Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5463575Z npm warn EBADENGINE   package: '@aws-sdk/types@3.972.0',
+2026-01-22T10:34:34.5464313Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5465113Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5465714Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5466187Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5466952Z npm warn EBADENGINE   package: '@aws-sdk/util-arn-parser@3.972.0',
+2026-01-22T10:34:34.5467743Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5468719Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5469356Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5469824Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5470573Z npm warn EBADENGINE   package: '@aws-sdk/util-endpoints@3.972.0',
+2026-01-22T10:34:34.5471351Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5472171Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5472813Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5473641Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5474527Z npm warn EBADENGINE   package: '@aws-sdk/util-format-url@3.972.0',
+2026-01-22T10:34:34.5475401Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5476233Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5476896Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5477410Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5478233Z npm warn EBADENGINE   package: '@aws-sdk/util-locate-window@3.965.3',
+2026-01-22T10:34:34.5479244Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5480066Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5480688Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5481182Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5481986Z npm warn EBADENGINE   package: '@aws-sdk/util-user-agent-node@3.972.0',
+2026-01-22T10:34:34.5482842Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5483674Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5484306Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5484811Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5485563Z npm warn EBADENGINE   package: '@aws-sdk/xml-builder@3.972.0',
+2026-01-22T10:34:34.5486358Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5487179Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5487817Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5488318Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5489165Z npm warn EBADENGINE   package: '@azure/core-auth@1.10.1',
+2026-01-22T10:34:34.5489934Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5490760Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5491398Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5491947Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5492704Z npm warn EBADENGINE   package: '@azure/core-client@1.10.1',
+2026-01-22T10:34:34.5493483Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5494346Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5495013Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5495528Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5496614Z npm warn EBADENGINE   package: '@azure/core-http-compat@2.3.1',
+2026-01-22T10:34:34.5497427Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5498265Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5499117Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5499602Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5500328Z npm warn EBADENGINE   package: '@azure/core-rest-pipeline@1.22.2',
+2026-01-22T10:34:34.5501157Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5501957Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5502533Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5502948Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5503587Z npm warn EBADENGINE   package: '@azure/core-tracing@1.3.1',
+2026-01-22T10:34:34.5504299Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5505029Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5505603Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5506041Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5506717Z npm warn EBADENGINE   package: '@azure/core-util@1.13.1',
+2026-01-22T10:34:34.5507424Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5508184Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5508973Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5509423Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5510089Z npm warn EBADENGINE   package: '@azure/core-xml@1.5.0',
+2026-01-22T10:34:34.5511056Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5511807Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5512407Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5512892Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5513603Z npm warn EBADENGINE   package: '@azure/identity@4.13.0',
+2026-01-22T10:34:34.5514383Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5515239Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5515881Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5516373Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5517022Z npm warn EBADENGINE   package: '@azure/logger@1.3.0',
+2026-01-22T10:34:34.5517752Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5518782Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5519463Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5519947Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5520688Z npm warn EBADENGINE   package: '@azure/storage-blob@12.30.0',
+2026-01-22T10:34:34.5521495Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5522288Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5522652Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5522927Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5523328Z npm warn EBADENGINE   package: '@azure/storage-common@12.2.0',
+2026-01-22T10:34:34.5523734Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5524159Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5524491Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5524737Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5525123Z npm warn EBADENGINE   package: '@azure/storage-queue@12.29.0',
+2026-01-22T10:34:34.5525524Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5525966Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5526366Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5526838Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5527596Z npm warn EBADENGINE   package: '@typespec/ts-http-runtime@0.3.2',
+2026-01-22T10:34:34.5528603Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5529738Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5530411Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5530883Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5531593Z npm warn EBADENGINE   package: 'artillery@2.0.27',
+2026-01-22T10:34:34.5532356Z npm warn EBADENGINE   required: { node: '>= 22.13.0' },
+2026-01-22T10:34:34.5533198Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5533847Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5534334Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5534972Z npm warn EBADENGINE   package: 'cheerio@1.1.2',
+2026-01-22T10:34:34.5535770Z npm warn EBADENGINE   required: { node: '>=20.18.1' },
+2026-01-22T10:34:34.5536595Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5537220Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5537707Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5538602Z npm warn EBADENGINE   package: 'undici@7.19.0',
+2026-01-22T10:34:34.5539340Z npm warn EBADENGINE   required: { node: '>=20.18.1' },
+2026-01-22T10:34:34.5540157Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5540783Z npm warn EBADENGINE }
+2026-01-22T10:34:37.6905851Z npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+2026-01-22T10:34:38.8783744Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-01-22T10:34:41.5875209Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-01-22T10:34:41.7243315Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-01-22T10:34:41.7984805Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-01-22T10:34:59.0464029Z 
+2026-01-22T10:34:59.0464773Z added 1063 packages, and audited 1064 packages in 26s
+2026-01-22T10:34:59.0465396Z 
+2026-01-22T10:34:59.0465764Z 143 packages are looking for funding
+2026-01-22T10:34:59.0466093Z   run `npm fund` for details
+2026-01-22T10:34:59.0479349Z 
+2026-01-22T10:34:59.0479729Z found 0 vulnerabilities

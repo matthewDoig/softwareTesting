@@ -1,0 +1,140 @@
+﻿2026-01-22T10:34:23.8738824Z ##[group]Run actions/checkout@v4
+2026-01-22T10:34:23.8739478Z with:
+2026-01-22T10:34:23.8739697Z   repository: matthewDoig/softwareTesting
+2026-01-22T10:34:23.8740106Z   token: ***
+2026-01-22T10:34:23.8740288Z   ssh-strict: true
+2026-01-22T10:34:23.8740484Z   ssh-user: git
+2026-01-22T10:34:23.8740666Z   persist-credentials: true
+2026-01-22T10:34:23.8740870Z   clean: true
+2026-01-22T10:34:23.8741058Z   sparse-checkout-cone-mode: true
+2026-01-22T10:34:23.8741293Z   fetch-depth: 1
+2026-01-22T10:34:23.8741461Z   fetch-tags: false
+2026-01-22T10:34:23.8741641Z   show-progress: true
+2026-01-22T10:34:23.8741814Z   lfs: false
+2026-01-22T10:34:23.8741974Z   submodules: false
+2026-01-22T10:34:23.8742146Z   set-safe-directory: true
+2026-01-22T10:34:23.8742533Z env:
+2026-01-22T10:34:23.8742694Z   NODE_ENV: test
+2026-01-22T10:34:23.8742974Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:34:23.8743289Z ##[endgroup]
+2026-01-22T10:34:23.9907399Z Syncing repository: matthewDoig/softwareTesting
+2026-01-22T10:34:23.9910184Z ##[group]Getting Git version info
+2026-01-22T10:34:23.9910938Z Working directory is '/home/runner/work/softwareTesting/softwareTesting'
+2026-01-22T10:34:23.9912078Z [command]/usr/bin/git version
+2026-01-22T10:34:23.9982762Z git version 2.52.0
+2026-01-22T10:34:24.0013072Z ##[endgroup]
+2026-01-22T10:34:24.0023202Z Temporarily overriding HOME='/home/runner/work/_temp/abd99b6d-8549-4040-8320-beac66a1ea9f' before making global git config changes
+2026-01-22T10:34:24.0025256Z Adding repository directory to the temporary git global config as a safe directory
+2026-01-22T10:34:24.0039710Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/softwareTesting/softwareTesting
+2026-01-22T10:34:24.0085094Z Deleting the contents of '/home/runner/work/softwareTesting/softwareTesting'
+2026-01-22T10:34:24.0090687Z ##[group]Initializing the repository
+2026-01-22T10:34:24.0095853Z [command]/usr/bin/git init /home/runner/work/softwareTesting/softwareTesting
+2026-01-22T10:34:24.0183917Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-01-22T10:34:24.0186408Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-01-22T10:34:24.0187307Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-01-22T10:34:24.0187936Z hint: call:
+2026-01-22T10:34:24.0188172Z hint:
+2026-01-22T10:34:24.0188829Z hint: 	git config --global init.defaultBranch <name>
+2026-01-22T10:34:24.0189362Z hint:
+2026-01-22T10:34:24.0189826Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-01-22T10:34:24.0190651Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-01-22T10:34:24.0191283Z hint:
+2026-01-22T10:34:24.0191563Z hint: 	git branch -m <name>
+2026-01-22T10:34:24.0191933Z hint:
+2026-01-22T10:34:24.0192285Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-01-22T10:34:24.0193409Z Initialized empty Git repository in /home/runner/work/softwareTesting/softwareTesting/.git/
+2026-01-22T10:34:24.0198003Z [command]/usr/bin/git remote add origin https://github.com/matthewDoig/softwareTesting
+2026-01-22T10:34:24.0230150Z ##[endgroup]
+2026-01-22T10:34:24.0230800Z ##[group]Disabling automatic garbage collection
+2026-01-22T10:34:24.0235049Z [command]/usr/bin/git config --local gc.auto 0
+2026-01-22T10:34:24.0262726Z ##[endgroup]
+2026-01-22T10:34:24.0263379Z ##[group]Setting up auth
+2026-01-22T10:34:24.0270346Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-01-22T10:34:24.0299527Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-01-22T10:34:24.0617577Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-01-22T10:34:24.0646652Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-01-22T10:34:24.0864307Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-01-22T10:34:24.0893910Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-01-22T10:34:24.1122674Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-01-22T10:34:24.1155245Z ##[endgroup]
+2026-01-22T10:34:24.1155965Z ##[group]Fetching the repository
+2026-01-22T10:34:24.1164285Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0e902b2541a21f9a4c03ed3805fb107cfc54a60e:refs/remotes/origin/main
+2026-01-22T10:34:26.3119836Z From https://github.com/matthewDoig/softwareTesting
+2026-01-22T10:34:26.3121977Z  * [new ref]           0e902b2541a21f9a4c03ed3805fb107cfc54a60e -> origin/main
+2026-01-22T10:34:26.3154722Z ##[endgroup]
+2026-01-22T10:34:26.3155349Z ##[group]Determining the checkout info
+2026-01-22T10:34:26.3157490Z ##[endgroup]
+2026-01-22T10:34:26.3162690Z [command]/usr/bin/git sparse-checkout disable
+2026-01-22T10:34:26.3203774Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-01-22T10:34:26.3228783Z ##[group]Checking out the ref
+2026-01-22T10:34:26.3233004Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-01-22T10:34:27.3752827Z Updating files:  38% (21620/55898)
+2026-01-22T10:34:27.3991707Z Updating files:  39% (21801/55898)
+2026-01-22T10:34:27.4225228Z Updating files:  40% (22360/55898)
+2026-01-22T10:34:27.4405306Z Updating files:  41% (22919/55898)
+2026-01-22T10:34:27.4597815Z Updating files:  42% (23478/55898)
+2026-01-22T10:34:27.4789803Z Updating files:  43% (24037/55898)
+2026-01-22T10:34:27.5065704Z Updating files:  44% (24596/55898)
+2026-01-22T10:34:27.5293389Z Updating files:  45% (25155/55898)
+2026-01-22T10:34:27.5480734Z Updating files:  46% (25714/55898)
+2026-01-22T10:34:27.5679242Z Updating files:  47% (26273/55898)
+2026-01-22T10:34:27.5869126Z Updating files:  48% (26832/55898)
+2026-01-22T10:34:27.6080315Z Updating files:  49% (27391/55898)
+2026-01-22T10:34:27.6263094Z Updating files:  50% (27949/55898)
+2026-01-22T10:34:27.6454888Z Updating files:  51% (28508/55898)
+2026-01-22T10:34:27.6632342Z Updating files:  52% (29067/55898)
+2026-01-22T10:34:27.6849066Z Updating files:  53% (29626/55898)
+2026-01-22T10:34:27.7064200Z Updating files:  54% (30185/55898)
+2026-01-22T10:34:27.7285282Z Updating files:  55% (30744/55898)
+2026-01-22T10:34:27.7535499Z Updating files:  56% (31303/55898)
+2026-01-22T10:34:27.7752375Z Updating files:  57% (31862/55898)
+2026-01-22T10:34:27.8020479Z Updating files:  58% (32421/55898)
+2026-01-22T10:34:27.8294390Z Updating files:  59% (32980/55898)
+2026-01-22T10:34:27.8473461Z Updating files:  60% (33539/55898)
+2026-01-22T10:34:27.8659903Z Updating files:  61% (34098/55898)
+2026-01-22T10:34:27.8835423Z Updating files:  62% (34657/55898)
+2026-01-22T10:34:27.9072532Z Updating files:  63% (35216/55898)
+2026-01-22T10:34:27.9252304Z Updating files:  64% (35775/55898)
+2026-01-22T10:34:27.9426600Z Updating files:  65% (36334/55898)
+2026-01-22T10:34:27.9672041Z Updating files:  66% (36893/55898)
+2026-01-22T10:34:27.9849347Z Updating files:  67% (37452/55898)
+2026-01-22T10:34:28.0234071Z Updating files:  68% (38011/55898)
+2026-01-22T10:34:28.0459578Z Updating files:  69% (38570/55898)
+2026-01-22T10:34:28.0685053Z Updating files:  70% (39129/55898)
+2026-01-22T10:34:28.0917110Z Updating files:  71% (39688/55898)
+2026-01-22T10:34:28.1128592Z Updating files:  72% (40247/55898)
+2026-01-22T10:34:28.1343947Z Updating files:  73% (40806/55898)
+2026-01-22T10:34:28.1658210Z Updating files:  74% (41365/55898)
+2026-01-22T10:34:28.1851664Z Updating files:  75% (41924/55898)
+2026-01-22T10:34:28.2368860Z Updating files:  76% (42483/55898)
+2026-01-22T10:34:28.2796249Z Updating files:  77% (43042/55898)
+2026-01-22T10:34:28.3311996Z Updating files:  78% (43601/55898)
+2026-01-22T10:34:28.3582211Z Updating files:  79% (44160/55898)
+2026-01-22T10:34:28.3690921Z Updating files:  80% (44719/55898)
+2026-01-22T10:34:28.3857931Z Updating files:  80% (44943/55898)
+2026-01-22T10:34:28.4140984Z Updating files:  81% (45278/55898)
+2026-01-22T10:34:28.4462640Z Updating files:  82% (45837/55898)
+2026-01-22T10:34:28.5242109Z Updating files:  83% (46396/55898)
+2026-01-22T10:34:28.5538073Z Updating files:  84% (46955/55898)
+2026-01-22T10:34:28.5824015Z Updating files:  85% (47514/55898)
+2026-01-22T10:34:28.6126286Z Updating files:  86% (48073/55898)
+2026-01-22T10:34:28.6419213Z Updating files:  87% (48632/55898)
+2026-01-22T10:34:28.6636459Z Updating files:  88% (49191/55898)
+2026-01-22T10:34:28.7013527Z Updating files:  89% (49750/55898)
+2026-01-22T10:34:28.7317047Z Updating files:  90% (50309/55898)
+2026-01-22T10:34:28.7688949Z Updating files:  91% (50868/55898)
+2026-01-22T10:34:28.8056453Z Updating files:  92% (51427/55898)
+2026-01-22T10:34:28.8378270Z Updating files:  93% (51986/55898)
+2026-01-22T10:34:28.9010278Z Updating files:  94% (52545/55898)
+2026-01-22T10:34:28.9382306Z Updating files:  95% (53104/55898)
+2026-01-22T10:34:28.9698270Z Updating files:  96% (53663/55898)
+2026-01-22T10:34:29.0399007Z Updating files:  97% (54222/55898)
+2026-01-22T10:34:29.1091875Z Updating files:  98% (54781/55898)
+2026-01-22T10:34:29.1379628Z Updating files:  99% (55340/55898)
+2026-01-22T10:34:29.1380247Z Updating files: 100% (55898/55898)
+2026-01-22T10:34:29.1380765Z Updating files: 100% (55898/55898), done.
+2026-01-22T10:34:29.1978897Z Switched to a new branch 'main'
+2026-01-22T10:34:29.1980900Z branch 'main' set up to track 'origin/main'.
+2026-01-22T10:34:29.2049311Z ##[endgroup]
+2026-01-22T10:34:29.2090557Z [command]/usr/bin/git log -1 --format=%H
+2026-01-22T10:34:29.2113820Z 0e902b2541a21f9a4c03ed3805fb107cfc54a60e

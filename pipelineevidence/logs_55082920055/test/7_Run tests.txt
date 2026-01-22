@@ -1,0 +1,77 @@
+﻿2026-01-22T10:35:06.1016010Z ##[group]Run npm test
+2026-01-22T10:35:06.1016267Z [36;1mnpm test[0m
+2026-01-22T10:35:06.1047941Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:35:06.1048164Z env:
+2026-01-22T10:35:06.1048316Z   NODE_ENV: test
+2026-01-22T10:35:06.1048699Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:35:06.1048994Z ##[endgroup]
+2026-01-22T10:35:06.2286081Z 
+2026-01-22T10:35:06.2286360Z > st-sample-project@0.1.0 test
+2026-01-22T10:35:06.2286955Z > DOTENV_CONFIG_PATH=.env jest --setupFiles dotenv/config  --forceExit && node db-cleanup.js
+2026-01-22T10:35:06.2287505Z 
+2026-01-22T10:35:06.8268994Z [dotenv@17.2.3] injecting env (7) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+2026-01-22T10:35:08.3328662Z PASS __tests__/api/api.users-admin.test.js
+2026-01-22T10:35:08.3449420Z   ● Console
+2026-01-22T10:35:08.3449975Z 
+2026-01-22T10:35:08.3450389Z     console.log
+2026-01-22T10:35:08.3452172Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+2026-01-22T10:35:08.3454025Z 
+2026-01-22T10:35:08.3454379Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.3454804Z 
+2026-01-22T10:35:08.4136914Z PASS __tests__/api/api.users-generic.test.js
+2026-01-22T10:35:08.4153468Z   ● Console
+2026-01-22T10:35:08.4154934Z 
+2026-01-22T10:35:08.4155674Z     console.log
+2026-01-22T10:35:08.4158294Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+2026-01-22T10:35:08.4159991Z 
+2026-01-22T10:35:08.4162004Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.4163861Z 
+2026-01-22T10:35:08.4469638Z PASS __tests__/api/api.users-simple.test.js
+2026-01-22T10:35:08.4489323Z   ● Console
+2026-01-22T10:35:08.4490354Z 
+2026-01-22T10:35:08.4490974Z     console.log
+2026-01-22T10:35:08.4492926Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+2026-01-22T10:35:08.4494118Z 
+2026-01-22T10:35:08.4495149Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.4495882Z 
+2026-01-22T10:35:08.7230292Z PASS __tests__/app/app.performance.test.js
+2026-01-22T10:35:08.7245618Z   ● Console
+2026-01-22T10:35:08.7247202Z 
+2026-01-22T10:35:08.7248027Z     console.log
+2026-01-22T10:35:08.7249938Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2026-01-22T10:35:08.7251311Z 
+2026-01-22T10:35:08.7252232Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.7253247Z 
+2026-01-22T10:35:08.8380690Z (node:2708) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+2026-01-22T10:35:08.8385450Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-01-22T10:35:08.9252147Z PASS __tests__/db/db.test.js
+2026-01-22T10:35:08.9260303Z   ● Console
+2026-01-22T10:35:08.9260580Z 
+2026-01-22T10:35:08.9260812Z     console.log
+2026-01-22T10:35:08.9261483Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2026-01-22T10:35:08.9261919Z 
+2026-01-22T10:35:08.9262079Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.9262295Z 
+2026-01-22T10:35:08.9767654Z PASS __tests__/app/app.unit.test.js
+2026-01-22T10:35:08.9781174Z   ● Console
+2026-01-22T10:35:08.9781524Z 
+2026-01-22T10:35:08.9809222Z     console.log
+2026-01-22T10:35:08.9811262Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+2026-01-22T10:35:08.9812044Z 
+2026-01-22T10:35:08.9812331Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.9812695Z 
+2026-01-22T10:35:08.9812817Z     console.log
+2026-01-22T10:35:08.9813834Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+2026-01-22T10:35:08.9815036Z 
+2026-01-22T10:35:08.9815307Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.9815677Z 
+2026-01-22T10:35:08.9990434Z 
+2026-01-22T10:35:08.9993895Z Test Suites: 6 passed, 6 total
+2026-01-22T10:35:08.9994453Z Tests:       46 passed, 46 total
+2026-01-22T10:35:08.9994947Z Snapshots:   0 total
+2026-01-22T10:35:08.9995428Z Time:        1.85 s
+2026-01-22T10:35:08.9996053Z Ran all test suites.
+2026-01-22T10:35:09.0210000Z [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+2026-01-22T10:35:09.0603581Z Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+2026-01-22T10:35:09.3080262Z [dotenv@17.2.3] injecting env (7) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+2026-01-22T10:35:09.3213875Z DB Cleanup complete.

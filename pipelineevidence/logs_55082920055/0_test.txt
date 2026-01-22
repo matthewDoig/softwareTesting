@@ -1,0 +1,871 @@
+﻿2026-01-22T10:34:15.5193641Z Current runner version: '2.331.0'
+2026-01-22T10:34:15.5225842Z ##[group]Runner Image Provisioner
+2026-01-22T10:34:15.5227081Z Hosted Compute Agent
+2026-01-22T10:34:15.5227913Z Version: 20251211.462
+2026-01-22T10:34:15.5229062Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+2026-01-22T10:34:15.5230274Z Build Date: 2025-12-11T16:28:49Z
+2026-01-22T10:34:15.5231244Z Worker ID: {f24a10d9-11fc-42f3-abf5-9b24fa1fe9b8}
+2026-01-22T10:34:15.5232376Z ##[endgroup]
+2026-01-22T10:34:15.5233234Z ##[group]Operating System
+2026-01-22T10:34:15.5234083Z Ubuntu
+2026-01-22T10:34:15.5234795Z 24.04.3
+2026-01-22T10:34:15.5235601Z LTS
+2026-01-22T10:34:15.5236307Z ##[endgroup]
+2026-01-22T10:34:15.5237059Z ##[group]Runner Image
+2026-01-22T10:34:15.5238015Z Image: ubuntu-24.04
+2026-01-22T10:34:15.5238993Z Version: 20260111.209.1
+2026-01-22T10:34:15.5240663Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260111.209/images/ubuntu/Ubuntu2404-Readme.md
+2026-01-22T10:34:15.5243311Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260111.209
+2026-01-22T10:34:15.5245069Z ##[endgroup]
+2026-01-22T10:34:15.5246728Z ##[group]GITHUB_TOKEN Permissions
+2026-01-22T10:34:15.5249330Z Contents: read
+2026-01-22T10:34:15.5250243Z Metadata: read
+2026-01-22T10:34:15.5250998Z Packages: read
+2026-01-22T10:34:15.5251825Z ##[endgroup]
+2026-01-22T10:34:15.5254713Z Secret source: Actions
+2026-01-22T10:34:15.5255712Z Prepare workflow directory
+2026-01-22T10:34:15.5853600Z Prepare all required actions
+2026-01-22T10:34:15.5907800Z Getting action download info
+2026-01-22T10:34:15.8795792Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-01-22T10:34:16.0171149Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-01-22T10:34:16.2899793Z Complete job name: test
+2026-01-22T10:34:16.3370072Z ##[group]Checking docker version
+2026-01-22T10:34:16.3382381Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-01-22T10:34:16.4200929Z '1.48'
+2026-01-22T10:34:16.4213381Z Docker daemon API version: '1.48'
+2026-01-22T10:34:16.4214132Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-01-22T10:34:16.4367818Z '1.48'
+2026-01-22T10:34:16.4381444Z Docker client API version: '1.48'
+2026-01-22T10:34:16.4386664Z ##[endgroup]
+2026-01-22T10:34:16.4390185Z ##[group]Clean up resources from previous jobs
+2026-01-22T10:34:16.4395274Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=04aae4"
+2026-01-22T10:34:16.4533394Z ##[command]/usr/bin/docker network prune --force --filter "label=04aae4"
+2026-01-22T10:34:16.4659938Z ##[endgroup]
+2026-01-22T10:34:16.4660424Z ##[group]Create local container network
+2026-01-22T10:34:16.4670595Z ##[command]/usr/bin/docker network create --label 04aae4 github_network_a6d060531d2742078ae263f23813f4f2
+2026-01-22T10:34:16.5178822Z e7c5c93c7921d03acc34ab4a98091960ed61e992996deb102bc3bf030ca5d2e0
+2026-01-22T10:34:16.5196110Z ##[endgroup]
+2026-01-22T10:34:16.5219992Z ##[group]Starting mongodb service container
+2026-01-22T10:34:16.5239792Z ##[command]/usr/bin/docker pull mongo:6
+2026-01-22T10:34:16.7930648Z 6: Pulling from library/mongo
+2026-01-22T10:34:16.8758185Z 7e49dc6156b0: Pulling fs layer
+2026-01-22T10:34:16.8759065Z 5ca411ad8051: Pulling fs layer
+2026-01-22T10:34:16.8759622Z baf1f36682ef: Pulling fs layer
+2026-01-22T10:34:16.8760161Z 3c99b8c985d2: Pulling fs layer
+2026-01-22T10:34:16.8760871Z a44afe9952bf: Pulling fs layer
+2026-01-22T10:34:16.8761720Z 9826927a661f: Pulling fs layer
+2026-01-22T10:34:16.8762250Z 7b14d5e3f398: Pulling fs layer
+2026-01-22T10:34:16.8762881Z e73078607ea4: Pulling fs layer
+2026-01-22T10:34:16.8763376Z a44afe9952bf: Waiting
+2026-01-22T10:34:16.8763954Z 9826927a661f: Waiting
+2026-01-22T10:34:16.8764401Z 7b14d5e3f398: Waiting
+2026-01-22T10:34:16.8764896Z e73078607ea4: Waiting
+2026-01-22T10:34:16.9346676Z 5ca411ad8051: Verifying Checksum
+2026-01-22T10:34:16.9352052Z 5ca411ad8051: Download complete
+2026-01-22T10:34:16.9382334Z baf1f36682ef: Download complete
+2026-01-22T10:34:16.9861432Z a44afe9952bf: Verifying Checksum
+2026-01-22T10:34:16.9862730Z a44afe9952bf: Download complete
+2026-01-22T10:34:16.9936766Z 3c99b8c985d2: Verifying Checksum
+2026-01-22T10:34:16.9940705Z 3c99b8c985d2: Download complete
+2026-01-22T10:34:17.0297611Z 9826927a661f: Verifying Checksum
+2026-01-22T10:34:17.0298891Z 9826927a661f: Download complete
+2026-01-22T10:34:17.0432851Z 7e49dc6156b0: Verifying Checksum
+2026-01-22T10:34:17.0433805Z 7e49dc6156b0: Download complete
+2026-01-22T10:34:17.0751092Z e73078607ea4: Verifying Checksum
+2026-01-22T10:34:17.0752621Z e73078607ea4: Download complete
+2026-01-22T10:34:17.9024949Z 7b14d5e3f398: Verifying Checksum
+2026-01-22T10:34:17.9025927Z 7b14d5e3f398: Download complete
+2026-01-22T10:34:18.1481829Z 7e49dc6156b0: Pull complete
+2026-01-22T10:34:18.7065961Z 5ca411ad8051: Pull complete
+2026-01-22T10:34:18.8464394Z baf1f36682ef: Pull complete
+2026-01-22T10:34:18.8826785Z 3c99b8c985d2: Pull complete
+2026-01-22T10:34:18.8918678Z a44afe9952bf: Pull complete
+2026-01-22T10:34:18.9153324Z 9826927a661f: Pull complete
+2026-01-22T10:34:23.4511343Z 7b14d5e3f398: Pull complete
+2026-01-22T10:34:23.4647909Z e73078607ea4: Pull complete
+2026-01-22T10:34:23.4693490Z Digest: sha256:03cda579c8caad6573cb98c2b3d5ff5ead452a6450561129b89595b4b9c18de2
+2026-01-22T10:34:23.4711800Z Status: Downloaded newer image for mongo:6
+2026-01-22T10:34:23.4720235Z docker.io/library/mongo:6
+2026-01-22T10:34:23.4757237Z ##[command]/usr/bin/docker create --name b5abc6ceb6e2456692a00ac34d54bb5f_mongo6_e72d42 --label 04aae4 --network github_network_a6d060531d2742078ae263f23813f4f2 --network-alias mongodb -p 27017:27017  -e GITHUB_ACTIONS=true -e CI=true mongo:6
+2026-01-22T10:34:23.5027040Z 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:34:23.5051813Z ##[command]/usr/bin/docker start 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:34:23.7871781Z 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:34:23.7892982Z ##[command]/usr/bin/docker ps --all --filter id=0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-01-22T10:34:23.8031066Z 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f Up Less than a second
+2026-01-22T10:34:23.8055189Z ##[command]/usr/bin/docker port 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:34:23.8182080Z 27017/tcp -> 0.0.0.0:27017
+2026-01-22T10:34:23.8182587Z 27017/tcp -> [::]:27017
+2026-01-22T10:34:23.8232498Z ##[endgroup]
+2026-01-22T10:34:23.8241398Z ##[group]Waiting for all services to be ready
+2026-01-22T10:34:23.8255143Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:34:23.8412449Z mongodb service is healthy.
+2026-01-22T10:34:23.8413411Z ##[endgroup]
+2026-01-22T10:34:23.8738843Z ##[group]Run actions/checkout@v4
+2026-01-22T10:34:23.8739484Z with:
+2026-01-22T10:34:23.8739700Z   repository: matthewDoig/softwareTesting
+2026-01-22T10:34:23.8740110Z   token: ***
+2026-01-22T10:34:23.8740291Z   ssh-strict: true
+2026-01-22T10:34:23.8740487Z   ssh-user: git
+2026-01-22T10:34:23.8740668Z   persist-credentials: true
+2026-01-22T10:34:23.8740872Z   clean: true
+2026-01-22T10:34:23.8741061Z   sparse-checkout-cone-mode: true
+2026-01-22T10:34:23.8741296Z   fetch-depth: 1
+2026-01-22T10:34:23.8741464Z   fetch-tags: false
+2026-01-22T10:34:23.8741644Z   show-progress: true
+2026-01-22T10:34:23.8741817Z   lfs: false
+2026-01-22T10:34:23.8741976Z   submodules: false
+2026-01-22T10:34:23.8742149Z   set-safe-directory: true
+2026-01-22T10:34:23.8742540Z env:
+2026-01-22T10:34:23.8742697Z   NODE_ENV: test
+2026-01-22T10:34:23.8742978Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:34:23.8743292Z ##[endgroup]
+2026-01-22T10:34:23.9907540Z Syncing repository: matthewDoig/softwareTesting
+2026-01-22T10:34:23.9910202Z ##[group]Getting Git version info
+2026-01-22T10:34:23.9910949Z Working directory is '/home/runner/work/softwareTesting/softwareTesting'
+2026-01-22T10:34:23.9912086Z [command]/usr/bin/git version
+2026-01-22T10:34:23.9982781Z git version 2.52.0
+2026-01-22T10:34:24.0013089Z ##[endgroup]
+2026-01-22T10:34:24.0023228Z Temporarily overriding HOME='/home/runner/work/_temp/abd99b6d-8549-4040-8320-beac66a1ea9f' before making global git config changes
+2026-01-22T10:34:24.0025271Z Adding repository directory to the temporary git global config as a safe directory
+2026-01-22T10:34:24.0039730Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/softwareTesting/softwareTesting
+2026-01-22T10:34:24.0085114Z Deleting the contents of '/home/runner/work/softwareTesting/softwareTesting'
+2026-01-22T10:34:24.0090702Z ##[group]Initializing the repository
+2026-01-22T10:34:24.0095871Z [command]/usr/bin/git init /home/runner/work/softwareTesting/softwareTesting
+2026-01-22T10:34:24.0183969Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-01-22T10:34:24.0186425Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-01-22T10:34:24.0187311Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-01-22T10:34:24.0187942Z hint: call:
+2026-01-22T10:34:24.0188175Z hint:
+2026-01-22T10:34:24.0188838Z hint: 	git config --global init.defaultBranch <name>
+2026-01-22T10:34:24.0189367Z hint:
+2026-01-22T10:34:24.0189831Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-01-22T10:34:24.0190656Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-01-22T10:34:24.0191287Z hint:
+2026-01-22T10:34:24.0191568Z hint: 	git branch -m <name>
+2026-01-22T10:34:24.0191939Z hint:
+2026-01-22T10:34:24.0192297Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-01-22T10:34:24.0193440Z Initialized empty Git repository in /home/runner/work/softwareTesting/softwareTesting/.git/
+2026-01-22T10:34:24.0198018Z [command]/usr/bin/git remote add origin https://github.com/matthewDoig/softwareTesting
+2026-01-22T10:34:24.0230167Z ##[endgroup]
+2026-01-22T10:34:24.0230806Z ##[group]Disabling automatic garbage collection
+2026-01-22T10:34:24.0235062Z [command]/usr/bin/git config --local gc.auto 0
+2026-01-22T10:34:24.0262741Z ##[endgroup]
+2026-01-22T10:34:24.0263391Z ##[group]Setting up auth
+2026-01-22T10:34:24.0270364Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-01-22T10:34:24.0299545Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-01-22T10:34:24.0617617Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-01-22T10:34:24.0647066Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-01-22T10:34:24.0864345Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-01-22T10:34:24.0893938Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-01-22T10:34:24.1122707Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-01-22T10:34:24.1155261Z ##[endgroup]
+2026-01-22T10:34:24.1155975Z ##[group]Fetching the repository
+2026-01-22T10:34:24.1164305Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0e902b2541a21f9a4c03ed3805fb107cfc54a60e:refs/remotes/origin/main
+2026-01-22T10:34:26.3119880Z From https://github.com/matthewDoig/softwareTesting
+2026-01-22T10:34:26.3122021Z  * [new ref]           0e902b2541a21f9a4c03ed3805fb107cfc54a60e -> origin/main
+2026-01-22T10:34:26.3154734Z ##[endgroup]
+2026-01-22T10:34:26.3155354Z ##[group]Determining the checkout info
+2026-01-22T10:34:26.3157501Z ##[endgroup]
+2026-01-22T10:34:26.3162704Z [command]/usr/bin/git sparse-checkout disable
+2026-01-22T10:34:26.3203789Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-01-22T10:34:26.3228796Z ##[group]Checking out the ref
+2026-01-22T10:34:26.3233025Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-01-22T10:34:27.3752868Z Updating files:  38% (21620/55898)
+2026-01-22T10:34:27.3991734Z Updating files:  39% (21801/55898)
+2026-01-22T10:34:27.4225249Z Updating files:  40% (22360/55898)
+2026-01-22T10:34:27.4405322Z Updating files:  41% (22919/55898)
+2026-01-22T10:34:27.4597831Z Updating files:  42% (23478/55898)
+2026-01-22T10:34:27.4789817Z Updating files:  43% (24037/55898)
+2026-01-22T10:34:27.5065724Z Updating files:  44% (24596/55898)
+2026-01-22T10:34:27.5293431Z Updating files:  45% (25155/55898)
+2026-01-22T10:34:27.5480750Z Updating files:  46% (25714/55898)
+2026-01-22T10:34:27.5679260Z Updating files:  47% (26273/55898)
+2026-01-22T10:34:27.5869161Z Updating files:  48% (26832/55898)
+2026-01-22T10:34:27.6080346Z Updating files:  49% (27391/55898)
+2026-01-22T10:34:27.6263112Z Updating files:  50% (27949/55898)
+2026-01-22T10:34:27.6454901Z Updating files:  51% (28508/55898)
+2026-01-22T10:34:27.6632356Z Updating files:  52% (29067/55898)
+2026-01-22T10:34:27.6849080Z Updating files:  53% (29626/55898)
+2026-01-22T10:34:27.7064220Z Updating files:  54% (30185/55898)
+2026-01-22T10:34:27.7285301Z Updating files:  55% (30744/55898)
+2026-01-22T10:34:27.7535523Z Updating files:  56% (31303/55898)
+2026-01-22T10:34:27.7752399Z Updating files:  57% (31862/55898)
+2026-01-22T10:34:27.8020505Z Updating files:  58% (32421/55898)
+2026-01-22T10:34:27.8294412Z Updating files:  59% (32980/55898)
+2026-01-22T10:34:27.8473481Z Updating files:  60% (33539/55898)
+2026-01-22T10:34:27.8659957Z Updating files:  61% (34098/55898)
+2026-01-22T10:34:27.8835453Z Updating files:  62% (34657/55898)
+2026-01-22T10:34:27.9072565Z Updating files:  63% (35216/55898)
+2026-01-22T10:34:27.9252319Z Updating files:  64% (35775/55898)
+2026-01-22T10:34:27.9426620Z Updating files:  65% (36334/55898)
+2026-01-22T10:34:27.9672074Z Updating files:  66% (36893/55898)
+2026-01-22T10:34:27.9849394Z Updating files:  67% (37452/55898)
+2026-01-22T10:34:28.0234103Z Updating files:  68% (38011/55898)
+2026-01-22T10:34:28.0459606Z Updating files:  69% (38570/55898)
+2026-01-22T10:34:28.0685092Z Updating files:  70% (39129/55898)
+2026-01-22T10:34:28.0917136Z Updating files:  71% (39688/55898)
+2026-01-22T10:34:28.1128615Z Updating files:  72% (40247/55898)
+2026-01-22T10:34:28.1343968Z Updating files:  73% (40806/55898)
+2026-01-22T10:34:28.1658248Z Updating files:  74% (41365/55898)
+2026-01-22T10:34:28.1851690Z Updating files:  75% (41924/55898)
+2026-01-22T10:34:28.2368906Z Updating files:  76% (42483/55898)
+2026-01-22T10:34:28.2796561Z Updating files:  77% (43042/55898)
+2026-01-22T10:34:28.3312022Z Updating files:  78% (43601/55898)
+2026-01-22T10:34:28.3582229Z Updating files:  79% (44160/55898)
+2026-01-22T10:34:28.3690937Z Updating files:  80% (44719/55898)
+2026-01-22T10:34:28.3857958Z Updating files:  80% (44943/55898)
+2026-01-22T10:34:28.4141004Z Updating files:  81% (45278/55898)
+2026-01-22T10:34:28.4462661Z Updating files:  82% (45837/55898)
+2026-01-22T10:34:28.5242150Z Updating files:  83% (46396/55898)
+2026-01-22T10:34:28.5538100Z Updating files:  84% (46955/55898)
+2026-01-22T10:34:28.5824041Z Updating files:  85% (47514/55898)
+2026-01-22T10:34:28.6126310Z Updating files:  86% (48073/55898)
+2026-01-22T10:34:28.6419232Z Updating files:  87% (48632/55898)
+2026-01-22T10:34:28.6636478Z Updating files:  88% (49191/55898)
+2026-01-22T10:34:28.7013576Z Updating files:  89% (49750/55898)
+2026-01-22T10:34:28.7317071Z Updating files:  90% (50309/55898)
+2026-01-22T10:34:28.7688978Z Updating files:  91% (50868/55898)
+2026-01-22T10:34:28.8056524Z Updating files:  92% (51427/55898)
+2026-01-22T10:34:28.8378293Z Updating files:  93% (51986/55898)
+2026-01-22T10:34:28.9010315Z Updating files:  94% (52545/55898)
+2026-01-22T10:34:28.9382330Z Updating files:  95% (53104/55898)
+2026-01-22T10:34:28.9698291Z Updating files:  96% (53663/55898)
+2026-01-22T10:34:29.0399044Z Updating files:  97% (54222/55898)
+2026-01-22T10:34:29.1091921Z Updating files:  98% (54781/55898)
+2026-01-22T10:34:29.1379673Z Updating files:  99% (55340/55898)
+2026-01-22T10:34:29.1380251Z Updating files: 100% (55898/55898)
+2026-01-22T10:34:29.1380771Z Updating files: 100% (55898/55898), done.
+2026-01-22T10:34:29.1978941Z Switched to a new branch 'main'
+2026-01-22T10:34:29.1980908Z branch 'main' set up to track 'origin/main'.
+2026-01-22T10:34:29.2049320Z ##[endgroup]
+2026-01-22T10:34:29.2090587Z [command]/usr/bin/git log -1 --format=%H
+2026-01-22T10:34:29.2113834Z 0e902b2541a21f9a4c03ed3805fb107cfc54a60e
+2026-01-22T10:34:29.2389623Z ##[group]Run actions/setup-node@v4
+2026-01-22T10:34:29.2389887Z with:
+2026-01-22T10:34:29.2390062Z   node-version: 18
+2026-01-22T10:34:29.2390253Z   cache: npm
+2026-01-22T10:34:29.2390425Z   always-auth: false
+2026-01-22T10:34:29.2390609Z   check-latest: false
+2026-01-22T10:34:29.2390925Z   token: ***
+2026-01-22T10:34:29.2391085Z env:
+2026-01-22T10:34:29.2391236Z   NODE_ENV: test
+2026-01-22T10:34:29.2391500Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:34:29.2391815Z ##[endgroup]
+2026-01-22T10:34:29.4400239Z Attempting to download 18...
+2026-01-22T10:34:29.7994985Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+2026-01-22T10:34:30.1552005Z Extracting ...
+2026-01-22T10:34:30.1652243Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/547d8e5c-cb0d-4784-9da6-8bf268269dc2 -f /home/runner/work/_temp/91bba035-fdf5-4fce-b18d-bdf26b9780cc
+2026-01-22T10:34:31.1022804Z Adding to the cache ...
+2026-01-22T10:34:32.6930946Z ##[group]Environment details
+2026-01-22T10:34:33.0276007Z node: v18.20.8
+2026-01-22T10:34:33.0276407Z npm: 10.8.2
+2026-01-22T10:34:33.0276705Z yarn: 1.22.22
+2026-01-22T10:34:33.0277395Z ##[endgroup]
+2026-01-22T10:34:33.0299961Z [command]/opt/hostedtoolcache/node/18.20.8/x64/bin/npm config get cache
+2026-01-22T10:34:33.1437257Z /home/runner/.npm
+2026-01-22T10:34:33.2667704Z npm cache is not found
+2026-01-22T10:34:33.2826659Z ##[group]Run npm ci
+2026-01-22T10:34:33.2826921Z [36;1mnpm ci[0m
+2026-01-22T10:34:33.2864370Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:34:33.2864611Z env:
+2026-01-22T10:34:33.2864771Z   NODE_ENV: test
+2026-01-22T10:34:33.2865043Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:34:33.2865351Z ##[endgroup]
+2026-01-22T10:34:34.5048858Z npm warn ERESOLVE overriding peer dependency
+2026-01-22T10:34:34.5049777Z npm warn While resolving: @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5050476Z npm warn Found: @opentelemetry/api@1.4.1
+2026-01-22T10:34:34.5051061Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5051936Z npm warn   @opentelemetry/api@"^1.0.0" from @opentelemetry/api-logs@0.41.2
+2026-01-22T10:34:34.5052753Z npm warn   node_modules/@opentelemetry/api-logs
+2026-01-22T10:34:34.5053703Z npm warn     @opentelemetry/api-logs@"0.41.2" from @opentelemetry/otlp-transformer@0.41.2
+2026-01-22T10:34:34.5054725Z npm warn     node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5055415Z npm warn     1 more (@opentelemetry/sdk-logs)
+2026-01-22T10:34:34.5056151Z npm warn   55 more (@opentelemetry/context-async-hooks, ...)
+2026-01-22T10:34:34.5056695Z npm warn
+2026-01-22T10:34:34.5057093Z npm warn Could not resolve dependency:
+2026-01-22T10:34:34.5058018Z npm warn peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5059578Z npm warn node_modules/@opentelemetry/exporter-metrics-otlp-proto/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5061078Z npm warn   @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/exporter-metrics-otlp-proto@0.205.0
+2026-01-22T10:34:34.5062560Z npm warn   node_modules/@opentelemetry/exporter-metrics-otlp-proto
+2026-01-22T10:34:34.5063702Z npm warn   2 more (@opentelemetry/exporter-metrics-otlp-http, @opentelemetry/otlp-transformer)
+2026-01-22T10:34:34.5064484Z npm warn
+2026-01-22T10:34:34.5065071Z npm warn Conflicting peer dependency: @opentelemetry/api@1.9.0
+2026-01-22T10:34:34.5065759Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5066697Z npm warn   peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5068075Z npm warn   node_modules/@opentelemetry/exporter-metrics-otlp-proto/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5069716Z npm warn     @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/exporter-metrics-otlp-proto@0.205.0
+2026-01-22T10:34:34.5070835Z npm warn     node_modules/@opentelemetry/exporter-metrics-otlp-proto
+2026-01-22T10:34:34.5071968Z npm warn     2 more (@opentelemetry/exporter-metrics-otlp-http, @opentelemetry/otlp-transformer)
+2026-01-22T10:34:34.5280490Z npm warn ERESOLVE overriding peer dependency
+2026-01-22T10:34:34.5281620Z npm warn While resolving: @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5283884Z npm warn Found: @opentelemetry/api@1.4.1
+2026-01-22T10:34:34.5284566Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5285448Z npm warn   @opentelemetry/api@"^1.0.0" from @opentelemetry/api-logs@0.41.2
+2026-01-22T10:34:34.5286325Z npm warn   node_modules/@opentelemetry/api-logs
+2026-01-22T10:34:34.5287335Z npm warn     @opentelemetry/api-logs@"0.41.2" from @opentelemetry/otlp-transformer@0.41.2
+2026-01-22T10:34:34.5288598Z npm warn     node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5289382Z npm warn     1 more (@opentelemetry/sdk-logs)
+2026-01-22T10:34:34.5290173Z npm warn   55 more (@opentelemetry/context-async-hooks, ...)
+2026-01-22T10:34:34.5290751Z npm warn
+2026-01-22T10:34:34.5291188Z npm warn Could not resolve dependency:
+2026-01-22T10:34:34.5292152Z npm warn peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5294034Z npm warn node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5296406Z npm warn   @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/otlp-transformer@0.205.0
+2026-01-22T10:34:34.5298049Z npm warn   node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5299207Z npm warn
+2026-01-22T10:34:34.5299838Z npm warn Conflicting peer dependency: @opentelemetry/api@1.9.0
+2026-01-22T10:34:34.5300575Z npm warn node_modules/@opentelemetry/api
+2026-01-22T10:34:34.5301558Z npm warn   peer @opentelemetry/api@">=1.9.0 <1.10.0" from @opentelemetry/sdk-metrics@2.1.0
+2026-01-22T10:34:34.5303458Z npm warn   node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer/node_modules/@opentelemetry/sdk-metrics
+2026-01-22T10:34:34.5305292Z npm warn     @opentelemetry/sdk-metrics@"2.1.0" from @opentelemetry/otlp-transformer@0.205.0
+2026-01-22T10:34:34.5306852Z npm warn     node_modules/@opentelemetry/exporter-trace-otlp-proto/node_modules/@opentelemetry/otlp-transformer
+2026-01-22T10:34:34.5308021Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5309103Z npm warn EBADENGINE   package: '@aws-sdk/client-cloudwatch@3.972.0',
+2026-01-22T10:34:34.5310016Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5310899Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5311566Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5312092Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5312974Z npm warn EBADENGINE   package: '@aws-sdk/client-cloudwatch-logs@3.972.0',
+2026-01-22T10:34:34.5313882Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5314704Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5315357Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5316202Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5317098Z npm warn EBADENGINE   package: '@aws-sdk/client-cognito-identity@3.972.0',
+2026-01-22T10:34:34.5318023Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5319136Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5319891Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5320400Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5321175Z npm warn EBADENGINE   package: '@aws-sdk/client-ec2@3.973.0',
+2026-01-22T10:34:34.5321986Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5322839Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5323506Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5324013Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5324783Z npm warn EBADENGINE   package: '@aws-sdk/client-ecs@3.972.0',
+2026-01-22T10:34:34.5325606Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5326456Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5327120Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5327644Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5328623Z npm warn EBADENGINE   package: '@aws-sdk/client-iam@3.972.0',
+2026-01-22T10:34:34.5329469Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5330318Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5330987Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5331500Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5332285Z npm warn EBADENGINE   package: '@aws-sdk/client-lambda@3.972.0',
+2026-01-22T10:34:34.5333117Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5333967Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5334616Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5335128Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5335897Z npm warn EBADENGINE   package: '@aws-sdk/client-s3@3.972.0',
+2026-01-22T10:34:34.5336704Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5337568Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5338221Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5339163Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5339993Z npm warn EBADENGINE   package: '@aws-sdk/client-sqs@3.972.0',
+2026-01-22T10:34:34.5340840Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5341879Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5342541Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5343053Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5343819Z npm warn EBADENGINE   package: '@aws-sdk/client-ssm@3.972.0',
+2026-01-22T10:34:34.5344630Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5345469Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5346142Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5346695Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5347464Z npm warn EBADENGINE   package: '@aws-sdk/client-sso@3.972.0',
+2026-01-22T10:34:34.5348283Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5349333Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5349925Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5350427Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5351194Z npm warn EBADENGINE   package: '@aws-sdk/client-sts@3.972.0',
+2026-01-22T10:34:34.5352017Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5352866Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5353529Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5354035Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5354766Z npm warn EBADENGINE   package: '@aws-sdk/core@3.972.0',
+2026-01-22T10:34:34.5355812Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5356630Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5357288Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5357784Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5358760Z npm warn EBADENGINE   package: '@aws-sdk/crc64-nvme@3.972.0',
+2026-01-22T10:34:34.5359561Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5360419Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5361079Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5361580Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5362586Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-cognito-identity@3.972.0',
+2026-01-22T10:34:34.5363626Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5364508Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5365191Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5365716Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5366606Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-env@3.972.0',
+2026-01-22T10:34:34.5367536Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5368584Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5369281Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5369802Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5370703Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-http@3.972.0',
+2026-01-22T10:34:34.5371660Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5372569Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5373242Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5373823Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5374711Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-ini@3.972.0',
+2026-01-22T10:34:34.5375647Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5376534Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5377202Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5377707Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5379184Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-login@3.972.0',
+2026-01-22T10:34:34.5380172Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5381038Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5381695Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5382210Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5383103Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-node@3.972.0',
+2026-01-22T10:34:34.5384025Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5384875Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5385533Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5386054Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5386972Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-process@3.972.0',
+2026-01-22T10:34:34.5387911Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5388977Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5389653Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5390155Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5391022Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-sso@3.972.0',
+2026-01-22T10:34:34.5391927Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5392775Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5393445Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5393913Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5394850Z npm warn EBADENGINE   package: '@aws-sdk/credential-provider-web-identity@3.972.0',
+2026-01-22T10:34:34.5395803Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5396876Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5397560Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5398051Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5399099Z npm warn EBADENGINE   package: '@aws-sdk/credential-providers@3.972.0',
+2026-01-22T10:34:34.5399975Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5400772Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5401392Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5401884Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5402741Z npm warn EBADENGINE   package: '@aws-sdk/middleware-bucket-endpoint@3.972.0',
+2026-01-22T10:34:34.5403655Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5404473Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5405105Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5405599Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5406472Z npm warn EBADENGINE   package: '@aws-sdk/middleware-expect-continue@3.972.0',
+2026-01-22T10:34:34.5407373Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5408193Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5409013Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5409505Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5410398Z npm warn EBADENGINE   package: '@aws-sdk/middleware-flexible-checksums@3.972.0',
+2026-01-22T10:34:34.5411301Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5412117Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5412744Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5413240Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5414085Z npm warn EBADENGINE   package: '@aws-sdk/middleware-host-header@3.972.0',
+2026-01-22T10:34:34.5414924Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5415734Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5416349Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5416850Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5417982Z npm warn EBADENGINE   package: '@aws-sdk/middleware-location-constraint@3.972.0',
+2026-01-22T10:34:34.5419153Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5419987Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5420631Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5421186Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5422031Z npm warn EBADENGINE   package: '@aws-sdk/middleware-logger@3.972.0',
+2026-01-22T10:34:34.5422911Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5423755Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5424391Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5424893Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5425836Z npm warn EBADENGINE   package: '@aws-sdk/middleware-recursion-detection@3.972.0',
+2026-01-22T10:34:34.5426806Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5427638Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5428265Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5428938Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5429761Z npm warn EBADENGINE   package: '@aws-sdk/middleware-sdk-ec2@3.972.0',
+2026-01-22T10:34:34.5430614Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5431466Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5432111Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5432630Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5433450Z npm warn EBADENGINE   package: '@aws-sdk/middleware-sdk-s3@3.972.0',
+2026-01-22T10:34:34.5434299Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5435392Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5436053Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5436561Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5437404Z npm warn EBADENGINE   package: '@aws-sdk/middleware-sdk-sqs@3.972.0',
+2026-01-22T10:34:34.5438290Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5439367Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5440004Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5440538Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5441343Z npm warn EBADENGINE   package: '@aws-sdk/middleware-ssec@3.972.0',
+2026-01-22T10:34:34.5442158Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5442976Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5443621Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5444105Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5444952Z npm warn EBADENGINE   package: '@aws-sdk/middleware-user-agent@3.972.0',
+2026-01-22T10:34:34.5445828Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5446647Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5447267Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5447764Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5448741Z npm warn EBADENGINE   package: '@aws-sdk/nested-clients@3.972.0',
+2026-01-22T10:34:34.5449559Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5450377Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5451014Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5451570Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5452408Z npm warn EBADENGINE   package: '@aws-sdk/region-config-resolver@3.972.0',
+2026-01-22T10:34:34.5453270Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5454074Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5454709Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5455191Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5456099Z npm warn EBADENGINE   package: '@aws-sdk/signature-v4-multi-region@3.972.0',
+2026-01-22T10:34:34.5456987Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5458020Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5458866Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5459366Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5460146Z npm warn EBADENGINE   package: '@aws-sdk/token-providers@3.972.0',
+2026-01-22T10:34:34.5460951Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5461783Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5462407Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5462891Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5463579Z npm warn EBADENGINE   package: '@aws-sdk/types@3.972.0',
+2026-01-22T10:34:34.5464318Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5465117Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5465719Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5466192Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5466963Z npm warn EBADENGINE   package: '@aws-sdk/util-arn-parser@3.972.0',
+2026-01-22T10:34:34.5467746Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5468728Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5469359Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5469828Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5470578Z npm warn EBADENGINE   package: '@aws-sdk/util-endpoints@3.972.0',
+2026-01-22T10:34:34.5471357Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5472178Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5472820Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5473647Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5474535Z npm warn EBADENGINE   package: '@aws-sdk/util-format-url@3.972.0',
+2026-01-22T10:34:34.5475408Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5476248Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5476903Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5477416Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5478241Z npm warn EBADENGINE   package: '@aws-sdk/util-locate-window@3.965.3',
+2026-01-22T10:34:34.5479254Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5480071Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5480692Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5481189Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5481991Z npm warn EBADENGINE   package: '@aws-sdk/util-user-agent-node@3.972.0',
+2026-01-22T10:34:34.5482849Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5483689Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5484311Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5484817Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5485577Z npm warn EBADENGINE   package: '@aws-sdk/xml-builder@3.972.0',
+2026-01-22T10:34:34.5486362Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5487186Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5487823Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5488324Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5489181Z npm warn EBADENGINE   package: '@azure/core-auth@1.10.1',
+2026-01-22T10:34:34.5489941Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5490765Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5491406Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5491952Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5492711Z npm warn EBADENGINE   package: '@azure/core-client@1.10.1',
+2026-01-22T10:34:34.5493489Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5494354Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5495029Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5495793Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5496621Z npm warn EBADENGINE   package: '@azure/core-http-compat@2.3.1',
+2026-01-22T10:34:34.5497433Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5498273Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5499124Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5499607Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5500335Z npm warn EBADENGINE   package: '@azure/core-rest-pipeline@1.22.2',
+2026-01-22T10:34:34.5501172Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5501963Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5502538Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5502952Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5503590Z npm warn EBADENGINE   package: '@azure/core-tracing@1.3.1',
+2026-01-22T10:34:34.5504302Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5505038Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5505607Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5506054Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5506722Z npm warn EBADENGINE   package: '@azure/core-util@1.13.1',
+2026-01-22T10:34:34.5507428Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5508188Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5508977Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5509426Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5510094Z npm warn EBADENGINE   package: '@azure/core-xml@1.5.0',
+2026-01-22T10:34:34.5511060Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5511817Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5512412Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5512896Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5513617Z npm warn EBADENGINE   package: '@azure/identity@4.13.0',
+2026-01-22T10:34:34.5514390Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5515248Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5515888Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5516380Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5517038Z npm warn EBADENGINE   package: '@azure/logger@1.3.0',
+2026-01-22T10:34:34.5517758Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5518791Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5519471Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5519953Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5520695Z npm warn EBADENGINE   package: '@azure/storage-blob@12.30.0',
+2026-01-22T10:34:34.5521503Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5522294Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5522663Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5522929Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5523330Z npm warn EBADENGINE   package: '@azure/storage-common@12.2.0',
+2026-01-22T10:34:34.5523737Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5524161Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5524494Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5524739Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5525125Z npm warn EBADENGINE   package: '@azure/storage-queue@12.29.0',
+2026-01-22T10:34:34.5525533Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5525969Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5526370Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5526842Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5527601Z npm warn EBADENGINE   package: '@typespec/ts-http-runtime@0.3.2',
+2026-01-22T10:34:34.5528838Z npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-01-22T10:34:34.5529746Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5530417Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5530888Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5531600Z npm warn EBADENGINE   package: 'artillery@2.0.27',
+2026-01-22T10:34:34.5532361Z npm warn EBADENGINE   required: { node: '>= 22.13.0' },
+2026-01-22T10:34:34.5533214Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5533852Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5534339Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5534977Z npm warn EBADENGINE   package: 'cheerio@1.1.2',
+2026-01-22T10:34:34.5535775Z npm warn EBADENGINE   required: { node: '>=20.18.1' },
+2026-01-22T10:34:34.5536599Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5537226Z npm warn EBADENGINE }
+2026-01-22T10:34:34.5537712Z npm warn EBADENGINE Unsupported engine {
+2026-01-22T10:34:34.5538615Z npm warn EBADENGINE   package: 'undici@7.19.0',
+2026-01-22T10:34:34.5539346Z npm warn EBADENGINE   required: { node: '>=20.18.1' },
+2026-01-22T10:34:34.5540162Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-01-22T10:34:34.5540789Z npm warn EBADENGINE }
+2026-01-22T10:34:37.6905894Z npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+2026-01-22T10:34:38.8783786Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-01-22T10:34:41.5875250Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-01-22T10:34:41.7243357Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-01-22T10:34:41.7984871Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-01-22T10:34:59.0464082Z 
+2026-01-22T10:34:59.0464781Z added 1063 packages, and audited 1064 packages in 26s
+2026-01-22T10:34:59.0465405Z 
+2026-01-22T10:34:59.0465769Z 143 packages are looking for funding
+2026-01-22T10:34:59.0466095Z   run `npm fund` for details
+2026-01-22T10:34:59.0479368Z 
+2026-01-22T10:34:59.0479736Z found 0 vulnerabilities
+2026-01-22T10:34:59.0885178Z ##[group]Run node server.js &
+2026-01-22T10:34:59.0885472Z [36;1mnode server.js &[0m
+2026-01-22T10:34:59.0885689Z [36;1mecho $! > server.pid[0m
+2026-01-22T10:34:59.0885899Z [36;1msleep 2[0m
+2026-01-22T10:34:59.0918192Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:34:59.0918611Z env:
+2026-01-22T10:34:59.0918765Z   NODE_ENV: test
+2026-01-22T10:34:59.0919032Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:34:59.0919339Z ##[endgroup]
+2026-01-22T10:34:59.3873053Z [dotenv@17.2.3] injecting env (7) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+2026-01-22T10:34:59.4179695Z [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2026-01-22T10:34:59.4273950Z [dotenv@17.2.3] injecting env (0) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+2026-01-22T10:34:59.4285865Z [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+2026-01-22T10:34:59.4550792Z Server started on port 3000.
+2026-01-22T10:35:06.1016023Z ##[group]Run npm test
+2026-01-22T10:35:06.1016270Z [36;1mnpm test[0m
+2026-01-22T10:35:06.1047947Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:35:06.1048167Z env:
+2026-01-22T10:35:06.1048318Z   NODE_ENV: test
+2026-01-22T10:35:06.1048702Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:35:06.1048997Z ##[endgroup]
+2026-01-22T10:35:06.2286107Z 
+2026-01-22T10:35:06.2286364Z > st-sample-project@0.1.0 test
+2026-01-22T10:35:06.2286958Z > DOTENV_CONFIG_PATH=.env jest --setupFiles dotenv/config  --forceExit && node db-cleanup.js
+2026-01-22T10:35:06.2287510Z 
+2026-01-22T10:35:06.8269041Z [dotenv@17.2.3] injecting env (7) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+2026-01-22T10:35:08.3328708Z PASS __tests__/api/api.users-admin.test.js
+2026-01-22T10:35:08.3449450Z   ● Console
+2026-01-22T10:35:08.3449984Z 
+2026-01-22T10:35:08.3450395Z     console.log
+2026-01-22T10:35:08.3452273Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+2026-01-22T10:35:08.3454037Z 
+2026-01-22T10:35:08.3454395Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.3454809Z 
+2026-01-22T10:35:08.4136959Z PASS __tests__/api/api.users-generic.test.js
+2026-01-22T10:35:08.4153493Z   ● Console
+2026-01-22T10:35:08.4154948Z 
+2026-01-22T10:35:08.4155681Z     console.log
+2026-01-22T10:35:08.4158310Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+2026-01-22T10:35:08.4160005Z 
+2026-01-22T10:35:08.4162017Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.4163892Z 
+2026-01-22T10:35:08.4469677Z PASS __tests__/api/api.users-simple.test.js
+2026-01-22T10:35:08.4489351Z   ● Console
+2026-01-22T10:35:08.4490364Z 
+2026-01-22T10:35:08.4490980Z     console.log
+2026-01-22T10:35:08.4492936Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+2026-01-22T10:35:08.4494169Z 
+2026-01-22T10:35:08.4495161Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.4495892Z 
+2026-01-22T10:35:08.7230321Z PASS __tests__/app/app.performance.test.js
+2026-01-22T10:35:08.7245636Z   ● Console
+2026-01-22T10:35:08.7247209Z 
+2026-01-22T10:35:08.7248032Z     console.log
+2026-01-22T10:35:08.7249946Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2026-01-22T10:35:08.7251316Z 
+2026-01-22T10:35:08.7252237Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.7253252Z 
+2026-01-22T10:35:08.8380745Z (node:2708) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+2026-01-22T10:35:08.8385505Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-01-22T10:35:08.9252189Z PASS __tests__/db/db.test.js
+2026-01-22T10:35:08.9260324Z   ● Console
+2026-01-22T10:35:08.9260587Z 
+2026-01-22T10:35:08.9260816Z     console.log
+2026-01-22T10:35:08.9261487Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2026-01-22T10:35:08.9261921Z 
+2026-01-22T10:35:08.9262081Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.9262297Z 
+2026-01-22T10:35:08.9767677Z PASS __tests__/app/app.unit.test.js
+2026-01-22T10:35:08.9781191Z   ● Console
+2026-01-22T10:35:08.9781534Z 
+2026-01-22T10:35:08.9809237Z     console.log
+2026-01-22T10:35:08.9811272Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+2026-01-22T10:35:08.9812050Z 
+2026-01-22T10:35:08.9812335Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.9812698Z 
+2026-01-22T10:35:08.9812821Z     console.log
+2026-01-22T10:35:08.9814275Z       [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+2026-01-22T10:35:08.9815041Z 
+2026-01-22T10:35:08.9815311Z       at _log (node_modules/dotenv/lib/main.js:142:11)
+2026-01-22T10:35:08.9815680Z 
+2026-01-22T10:35:08.9990458Z 
+2026-01-22T10:35:08.9993902Z Test Suites: 6 passed, 6 total
+2026-01-22T10:35:08.9994459Z Tests:       46 passed, 46 total
+2026-01-22T10:35:08.9994953Z Snapshots:   0 total
+2026-01-22T10:35:08.9995432Z Time:        1.85 s
+2026-01-22T10:35:08.9996058Z Ran all test suites.
+2026-01-22T10:35:09.0210024Z [dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+2026-01-22T10:35:09.0603614Z Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+2026-01-22T10:35:09.3080292Z [dotenv@17.2.3] injecting env (7) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+2026-01-22T10:35:09.3213922Z DB Cleanup complete.
+2026-01-22T10:35:09.3681600Z ##[group]Run if [ -f server.pid ]; then kill $(cat server.pid) || true; fi
+2026-01-22T10:35:09.3682132Z [36;1mif [ -f server.pid ]; then kill $(cat server.pid) || true; fi[0m
+2026-01-22T10:35:09.3715142Z shell: /usr/bin/bash -e {0}
+2026-01-22T10:35:09.3715448Z env:
+2026-01-22T10:35:09.3715606Z   NODE_ENV: test
+2026-01-22T10:35:09.3715880Z   MONGO_URI: mongodb://localhost:27017/st_sample_project
+2026-01-22T10:35:09.3716186Z ##[endgroup]
+2026-01-22T10:35:09.3830969Z Post job cleanup.
+2026-01-22T10:35:09.5521376Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/softwareTesting/softwareTesting --files-from manifest.txt --use-compress-program zstdmt
+2026-01-22T10:35:10.9239279Z Sent 54657024 of 55150958 (99.1%), 52.1 MBs/sec
+2026-01-22T10:35:11.1699420Z Sent 55150958 of 55150958 (100.0%), 42.2 MBs/sec
+2026-01-22T10:35:11.2683461Z Cache saved with the key: node-cache-Linux-x64-npm-0bcccbed6e570971a12fc8ffc4fecc4dc218948f3945f258a67382e158ed4623
+2026-01-22T10:35:11.2821945Z Post job cleanup.
+2026-01-22T10:35:11.3753946Z [command]/usr/bin/git version
+2026-01-22T10:35:11.3789407Z git version 2.52.0
+2026-01-22T10:35:11.3840076Z Temporarily overriding HOME='/home/runner/work/_temp/5564edfe-85c1-4213-b31e-3ea6a439d83f' before making global git config changes
+2026-01-22T10:35:11.3841272Z Adding repository directory to the temporary git global config as a safe directory
+2026-01-22T10:35:11.3847642Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/softwareTesting/softwareTesting
+2026-01-22T10:35:11.3891290Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-01-22T10:35:11.3929745Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-01-22T10:35:11.4225206Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-01-22T10:35:11.4252408Z http.https://github.com/.extraheader
+2026-01-22T10:35:11.4265419Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-01-22T10:35:11.4300091Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-01-22T10:35:11.4587142Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-01-22T10:35:11.4621368Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-01-22T10:35:11.4981200Z Print service container logs: b5abc6ceb6e2456692a00ac34d54bb5f_mongo6_e72d42
+2026-01-22T10:35:11.4985808Z ##[command]/usr/bin/docker logs --details 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:35:11.5154746Z  {"t":{"$date":"2026-01-22T10:34:23.820+00:00"},"s":"I",  "c":"CONTROL",  "id":23285,   "ctx":"-","msg":"Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+2026-01-22T10:35:11.5159178Z  {"t":{"$date":"2026-01-22T10:34:23.820+00:00"},"s":"I",  "c":"NETWORK",  "id":4915701, "ctx":"-","msg":"Initialized wire specification","attr":{"spec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":17},"outgoing":{"minWireVersion":6,"maxWireVersion":17},"isInternalClient":true}}}
+2026-01-22T10:35:11.5162638Z  {"t":{"$date":"2026-01-22T10:34:23.822+00:00"},"s":"I",  "c":"NETWORK",  "id":4648601, "ctx":"main","msg":"Implicit TCP FastOpen unavailable. If TCP FastOpen is required, set tcpFastOpenServer, tcpFastOpenClient, and tcpFastOpenQueueSize."}
+2026-01-22T10:35:11.5165349Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationDonorService","namespace":"config.tenantMigrationDonors"}}
+2026-01-22T10:35:11.5168070Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationRecipientService","namespace":"config.tenantMigrationRecipients"}}
+2026-01-22T10:35:11.5170875Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"ShardSplitDonorService","namespace":"config.tenantSplitDonors"}}
+2026-01-22T10:35:11.5172755Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"CONTROL",  "id":5945603, "ctx":"main","msg":"Multi threading initialized"}
+2026-01-22T10:35:11.5174582Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"CONTROL",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":1,"port":27017,"dbPath":"/data/db","architecture":"64-bit","host":"0ba8eefdd79b"}}
+2026-01-22T10:35:11.5176454Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"6.0.27","gitVersion":"fc88ca137231d7457aed6265d4f32a361ae71716","openSSLVersion":"OpenSSL 3.0.2 15 Mar 2022","modules":[],"allocator":"tcmalloc","environment":{"distmod":"ubuntu2204","distarch":"x86_64","target_arch":"x86_64"}}}}
+2026-01-22T10:35:11.5178540Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Ubuntu","version":"22.04"}}}
+2026-01-22T10:35:11.5179619Z  {"t":{"$date":"2026-01-22T10:34:23.823+00:00"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{"net":{"bindIp":"*"}}}}
+2026-01-22T10:35:11.5181059Z  {"t":{"$date":"2026-01-22T10:34:23.824+00:00"},"s":"I",  "c":"STORAGE",  "id":22297,   "ctx":"initandlisten","msg":"Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem","tags":["startupWarnings"]}
+2026-01-22T10:35:11.5184478Z  {"t":{"$date":"2026-01-22T10:34:23.824+00:00"},"s":"I",  "c":"STORAGE",  "id":22315,   "ctx":"initandlisten","msg":"Opening WiredTiger","attr":{"config":"create,cache_size=7485M,session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,remove=true,path=journal,compressor=snappy),builtin_extension_config=(zstd=(compression_level=6)),file_manager=(close_idle_time=600,close_scan_interval=10,close_handle_minimum=2000),statistics_log=(wait=0),json_output=(error,message),verbose=[recovery_progress:1,checkpoint_progress:1,compact_progress:1,backup:0,checkpoint:0,compact:0,evict:0,history_store:0,recovery:0,rts:0,salvage:0,tiered:0,timestamp:0,transaction:0,verify:0,log:0],"}}
+2026-01-22T10:35:11.5188134Z  {"t":{"$date":"2026-01-22T10:34:23.981+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1769078063,"ts_usec":981302,"thread":"1:0x7fa755fc1cc0","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","category_id":30,"verbose_level":"DEBUG","verbose_level_id":1,"msg":"recovery log replay has successfully finished and ran for 0 milliseconds"}}}
+2026-01-22T10:35:11.5190778Z  {"t":{"$date":"2026-01-22T10:34:23.981+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1769078063,"ts_usec":981381,"thread":"1:0x7fa755fc1cc0","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","category_id":30,"verbose_level":"DEBUG","verbose_level_id":1,"msg":"Set global recovery timestamp: (0, 0)"}}}
+2026-01-22T10:35:11.5193113Z  {"t":{"$date":"2026-01-22T10:34:23.981+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1769078063,"ts_usec":981400,"thread":"1:0x7fa755fc1cc0","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","category_id":30,"verbose_level":"DEBUG","verbose_level_id":1,"msg":"Set global oldest timestamp: (0, 0)"}}}
+2026-01-22T10:35:11.5195782Z  {"t":{"$date":"2026-01-22T10:34:23.981+00:00"},"s":"I",  "c":"WTRECOV",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":{"ts_sec":1769078063,"ts_usec":981436,"thread":"1:0x7fa755fc1cc0","session_name":"txn-recover","category":"WT_VERB_RECOVERY_PROGRESS","category_id":30,"verbose_level":"DEBUG","verbose_level_id":1,"msg":"recovery was completed successfully and took 0ms, including 0ms for the log replay, 0ms for the rollback to stable, and 0ms for the checkpoint."}}}
+2026-01-22T10:35:11.5197749Z  {"t":{"$date":"2026-01-22T10:34:23.985+00:00"},"s":"I",  "c":"STORAGE",  "id":4795906, "ctx":"initandlisten","msg":"WiredTiger opened","attr":{"durationMillis":161}}
+2026-01-22T10:35:11.5198944Z  {"t":{"$date":"2026-01-22T10:34:23.985+00:00"},"s":"I",  "c":"RECOVERY", "id":23987,   "ctx":"initandlisten","msg":"WiredTiger recoveryTimestamp","attr":{"recoveryTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+2026-01-22T10:35:11.5200268Z  {"t":{"$date":"2026-01-22T10:34:23.993+00:00"},"s":"W",  "c":"CONTROL",  "id":22120,   "ctx":"initandlisten","msg":"Access control is not enabled for the database. Read and write access to data and configuration is unrestricted","tags":["startupWarnings"]}
+2026-01-22T10:35:11.5201950Z  {"t":{"$date":"2026-01-22T10:34:23.993+00:00"},"s":"W",  "c":"CONTROL",  "id":22178,   "ctx":"initandlisten","msg":"/sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version","tags":["startupWarnings"]}
+2026-01-22T10:35:11.5203712Z  {"t":{"$date":"2026-01-22T10:34:23.993+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"initandlisten","msg":"createCollection","attr":{"namespace":"admin.system.version","uuidDisposition":"provided","uuid":{"uuid":{"$uuid":"c4684407-fe9e-42f9-89f2-3930e56fffbd"}},"options":{"uuid":{"$uuid":"c4684407-fe9e-42f9-89f2-3930e56fffbd"}}}}
+2026-01-22T10:35:11.5205956Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"initandlisten","msg":"Index build: done building","attr":{"buildUUID":null,"collectionUUID":{"uuid":{"$uuid":"c4684407-fe9e-42f9-89f2-3930e56fffbd"}},"namespace":"admin.system.version","index":"_id_","ident":"index-1-3961655211216384350","collectionIdent":"collection-0-3961655211216384350","commitTimestamp":null}}
+2026-01-22T10:35:11.5207809Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"REPL",     "id":20459,   "ctx":"initandlisten","msg":"Setting featureCompatibilityVersion","attr":{"newVersion":"6.0"}}
+2026-01-22T10:35:11.5209147Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"REPL",     "id":5853300, "ctx":"initandlisten","msg":"current featureCompatibilityVersion value","attr":{"featureCompatibilityVersion":"6.0","context":"setFCV"}}
+2026-01-22T10:35:11.5211696Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"NETWORK",  "id":4915702, "ctx":"initandlisten","msg":"Updated wire specification","attr":{"oldSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":17},"outgoing":{"minWireVersion":6,"maxWireVersion":17},"isInternalClient":true},"newSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":17,"maxWireVersion":17},"outgoing":{"minWireVersion":17,"maxWireVersion":17},"isInternalClient":true}}}
+2026-01-22T10:35:11.5215515Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"NETWORK",  "id":4915702, "ctx":"initandlisten","msg":"Updated wire specification","attr":{"oldSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":17,"maxWireVersion":17},"outgoing":{"minWireVersion":17,"maxWireVersion":17},"isInternalClient":true},"newSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":17,"maxWireVersion":17},"outgoing":{"minWireVersion":17,"maxWireVersion":17},"isInternalClient":true}}}
+2026-01-22T10:35:11.5218068Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"REPL",     "id":5853300, "ctx":"initandlisten","msg":"current featureCompatibilityVersion value","attr":{"featureCompatibilityVersion":"6.0","context":"startup"}}
+2026-01-22T10:35:11.5219340Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"STORAGE",  "id":5071100, "ctx":"initandlisten","msg":"Clearing temp directory"}
+2026-01-22T10:35:11.5220143Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"CONTROL",  "id":20536,   "ctx":"initandlisten","msg":"Flow Control is enabled on this deployment"}
+2026-01-22T10:35:11.5221178Z  {"t":{"$date":"2026-01-22T10:34:23.999+00:00"},"s":"I",  "c":"FTDC",     "id":20625,   "ctx":"initandlisten","msg":"Initializing full-time diagnostic data capture","attr":{"dataDirectory":"/data/db/diagnostic.data"}}
+2026-01-22T10:35:11.5222695Z  {"t":{"$date":"2026-01-22T10:34:24.001+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"initandlisten","msg":"createCollection","attr":{"namespace":"local.startup_log","uuidDisposition":"generated","uuid":{"uuid":{"$uuid":"4315578b-a525-486b-aa05-b53dd28621d0"}},"options":{"capped":true,"size":10485760}}}
+2026-01-22T10:35:11.5224962Z  {"t":{"$date":"2026-01-22T10:34:24.006+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"initandlisten","msg":"Index build: done building","attr":{"buildUUID":null,"collectionUUID":{"uuid":{"$uuid":"4315578b-a525-486b-aa05-b53dd28621d0"}},"namespace":"local.startup_log","index":"_id_","ident":"index-3-3961655211216384350","collectionIdent":"collection-2-3961655211216384350","commitTimestamp":null}}
+2026-01-22T10:35:11.5226830Z  {"t":{"$date":"2026-01-22T10:34:24.006+00:00"},"s":"I",  "c":"REPL",     "id":6015317, "ctx":"initandlisten","msg":"Setting new configuration state","attr":{"newState":"ConfigReplicationDisabled","oldState":"ConfigPreStart"}}
+2026-01-22T10:35:11.5227855Z  {"t":{"$date":"2026-01-22T10:34:24.006+00:00"},"s":"I",  "c":"STORAGE",  "id":22262,   "ctx":"initandlisten","msg":"Timestamp monitor starting"}
+2026-01-22T10:35:11.5229275Z  {"t":{"$date":"2026-01-22T10:34:24.007+00:00"},"s":"I",  "c":"CONTROL",  "id":20712,   "ctx":"LogicalSessionCacheReap","msg":"Sessions collection is not set up; waiting until next sessions reap interval","attr":{"error":"NamespaceNotFound: config.system.sessions does not exist"}}
+2026-01-22T10:35:11.5231101Z  {"t":{"$date":"2026-01-22T10:34:24.008+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"LogicalSessionCacheRefresh","msg":"createCollection","attr":{"namespace":"config.system.sessions","uuidDisposition":"generated","uuid":{"uuid":{"$uuid":"0be6bd8b-68f2-4cf7-ab7e-7603156c61c6"}},"options":{}}}
+2026-01-22T10:35:11.5232447Z  {"t":{"$date":"2026-01-22T10:34:24.008+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"/tmp/mongodb-27017.sock"}}
+2026-01-22T10:35:11.5233287Z  {"t":{"$date":"2026-01-22T10:34:24.008+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"0.0.0.0"}}
+2026-01-22T10:35:11.5234126Z  {"t":{"$date":"2026-01-22T10:34:24.008+00:00"},"s":"I",  "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections","attr":{"port":27017,"ssl":"off"}}
+2026-01-22T10:35:11.5239319Z  {"t":{"$date":"2026-01-22T10:34:24.008+00:00"},"s":"I",  "c":"CONTROL",  "id":8423403, "ctx":"initandlisten","msg":"mongod startup complete","attr":{"Summary of time elapsed":{"Startup from clean shutdown?":true,"Statistics":{"Transport layer setup":"0 ms","Run initial syncer crash recovery":"0 ms","Create storage engine lock file in the data directory":"0 ms","Create storage engine lock file in the data directory":"0 ms","Get metadata describing storage engine":"0 ms","Get metadata describing storage engine":"0 ms","Create storage engine":"0 ms","Create storage engine":"167 ms","Write current PID to file":"0 ms","Write current PID to file":"0 ms","Write a new metadata for storage engine":"0 ms","Write a new metadata for storage engine":"0 ms","Initialize FCV before rebuilding indexes":"0 ms","Initialize FCV before rebuilding indexes":"0 ms","Drop abandoned idents and get back indexes that need to be rebuilt or builds that need to be restarted":"0 ms","Drop abandoned idents and get back indexes that need to be rebuilt or builds that need to be restarted":"0 ms","Rebuild indexes for collections":"0 ms","Rebuild indexes for collections":"0 ms","Build user and roles graph":"0 ms","Set up the background thread pool responsible for waiting for opTimes to be majority committed":"0 ms","Start up the replication coordinator":"0 ms","Start transport layer":"0 ms","_initAndListen total elapsed time":"185 ms"}}}}
+2026-01-22T10:35:11.5245204Z  {"t":{"$date":"2026-01-22T10:34:24.015+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"LogicalSessionCacheRefresh","msg":"Index build: done building","attr":{"buildUUID":null,"collectionUUID":{"uuid":{"$uuid":"0be6bd8b-68f2-4cf7-ab7e-7603156c61c6"}},"namespace":"config.system.sessions","index":"_id_","ident":"index-5-3961655211216384350","collectionIdent":"collection-4-3961655211216384350","commitTimestamp":null}}
+2026-01-22T10:35:11.5248063Z  {"t":{"$date":"2026-01-22T10:34:24.015+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"LogicalSessionCacheRefresh","msg":"Index build: done building","attr":{"buildUUID":null,"collectionUUID":{"uuid":{"$uuid":"0be6bd8b-68f2-4cf7-ab7e-7603156c61c6"}},"namespace":"config.system.sessions","index":"lsidTTLIndex","ident":"index-6-3961655211216384350","collectionIdent":"collection-4-3961655211216384350","commitTimestamp":null}}
+2026-01-22T10:35:11.5250313Z  {"t":{"$date":"2026-01-22T10:34:59.442+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:59284","uuid":"81d935e4-56ef-4efe-91b4-b6e2ee017cb0","connectionId":1,"connectionCount":1}}
+2026-01-22T10:35:11.5252117Z  {"t":{"$date":"2026-01-22T10:34:59.445+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn1","msg":"client metadata","attr":{"remote":"172.18.0.1:59284","client":"conn1","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5253932Z  {"t":{"$date":"2026-01-22T10:34:59.455+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:59294","uuid":"900d966b-bdc9-45fe-a482-a1a808a7e996","connectionId":2,"connectionCount":2}}
+2026-01-22T10:35:11.5255455Z  {"t":{"$date":"2026-01-22T10:34:59.455+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:59296","uuid":"1d7b6fdd-d7f5-483a-b365-08765d751649","connectionId":3,"connectionCount":3}}
+2026-01-22T10:35:11.5257256Z  {"t":{"$date":"2026-01-22T10:34:59.455+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn2","msg":"client metadata","attr":{"remote":"172.18.0.1:59294","client":"conn2","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5259629Z  {"t":{"$date":"2026-01-22T10:34:59.456+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn3","msg":"client metadata","attr":{"remote":"172.18.0.1:59296","client":"conn3","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5261488Z  {"t":{"$date":"2026-01-22T10:34:59.458+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"conn2","msg":"createCollection","attr":{"namespace":"sampledb.users","uuidDisposition":"generated","uuid":{"uuid":{"$uuid":"051fca08-e075-41ed-9b06-ffe88679ddcc"}},"options":{}}}
+2026-01-22T10:35:11.5263031Z  {"t":{"$date":"2026-01-22T10:34:59.458+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"conn3","msg":"createCollection","attr":{"namespace":"sampledb.orders","uuidDisposition":"generated","uuid":{"uuid":{"$uuid":"caef4231-9346-4d4a-ba73-171e450bd6e3"}},"options":{}}}
+2026-01-22T10:35:11.5264987Z  {"t":{"$date":"2026-01-22T10:34:59.469+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"conn2","msg":"Index build: done building","attr":{"buildUUID":null,"collectionUUID":{"uuid":{"$uuid":"051fca08-e075-41ed-9b06-ffe88679ddcc"}},"namespace":"sampledb.users","index":"_id_","ident":"index-9-3961655211216384350","collectionIdent":"collection-7-3961655211216384350","commitTimestamp":null}}
+2026-01-22T10:35:11.5267351Z  {"t":{"$date":"2026-01-22T10:34:59.471+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"conn3","msg":"Index build: done building","attr":{"buildUUID":null,"collectionUUID":{"uuid":{"$uuid":"caef4231-9346-4d4a-ba73-171e450bd6e3"}},"namespace":"sampledb.orders","index":"_id_","ident":"index-10-3961655211216384350","collectionIdent":"collection-8-3961655211216384350","commitTimestamp":null}}
+2026-01-22T10:35:11.5270483Z  {"t":{"$date":"2026-01-22T10:34:59.474+00:00"},"s":"I",  "c":"INDEX",    "id":20438,   "ctx":"conn2","msg":"Index build: registering","attr":{"buildUUID":{"uuid":{"$uuid":"3a8bf560-b9a8-49ae-b9ef-deddd1a9aede"}},"namespace":"sampledb.users","collectionUUID":{"uuid":{"$uuid":"051fca08-e075-41ed-9b06-ffe88679ddcc"}},"indexes":1,"firstIndex":{"name":"email_1"},"command":{"createIndexes":"users","v":2,"indexes":[{"unique":true,"background":true,"name":"email_1","key":{"email":1}}],"ignoreUnknownIndexOptions":false}}}
+2026-01-22T10:35:11.5273223Z  {"t":{"$date":"2026-01-22T10:34:59.476+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"conn2","msg":"Index build: done building","attr":{"buildUUID":null,"collectionUUID":{"uuid":{"$uuid":"051fca08-e075-41ed-9b06-ffe88679ddcc"}},"namespace":"sampledb.users","index":"email_1","ident":"index-11-3961655211216384350","collectionIdent":"collection-7-3961655211216384350","commitTimestamp":null}}
+2026-01-22T10:35:11.5275261Z  {"t":{"$date":"2026-01-22T10:34:59.476+00:00"},"s":"I",  "c":"INDEX",    "id":20440,   "ctx":"conn2","msg":"Index build: waiting for index build to complete","attr":{"buildUUID":{"uuid":{"$uuid":"3a8bf560-b9a8-49ae-b9ef-deddd1a9aede"}},"deadline":{"$date":{"$numberLong":"9223372036854775807"}}}}
+2026-01-22T10:35:11.5276769Z  {"t":{"$date":"2026-01-22T10:34:59.476+00:00"},"s":"I",  "c":"INDEX",    "id":20447,   "ctx":"conn2","msg":"Index build: completed","attr":{"buildUUID":{"uuid":{"$uuid":"3a8bf560-b9a8-49ae-b9ef-deddd1a9aede"}}}}
+2026-01-22T10:35:11.5278046Z  {"t":{"$date":"2026-01-22T10:35:08.839+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53328","uuid":"8e61b457-751f-41f3-ae9e-c09b6b15434f","connectionId":4,"connectionCount":4}}
+2026-01-22T10:35:11.5280094Z  {"t":{"$date":"2026-01-22T10:35:08.842+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn4","msg":"client metadata","attr":{"remote":"172.18.0.1:53328","client":"conn4","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5281903Z  {"t":{"$date":"2026-01-22T10:35:08.865+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53342","uuid":"d074857b-fcf7-4808-9fc0-cb2be3d4398b","connectionId":5,"connectionCount":5}}
+2026-01-22T10:35:11.5283310Z  {"t":{"$date":"2026-01-22T10:35:08.865+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53352","uuid":"d6d3ef23-ad82-4eb5-a7c3-af97b77bcf8c","connectionId":6,"connectionCount":6}}
+2026-01-22T10:35:11.5285110Z  {"t":{"$date":"2026-01-22T10:35:08.867+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn6","msg":"client metadata","attr":{"remote":"172.18.0.1:53352","client":"conn6","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5287286Z  {"t":{"$date":"2026-01-22T10:35:08.867+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn5","msg":"client metadata","attr":{"remote":"172.18.0.1:53342","client":"conn5","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5289206Z  {"t":{"$date":"2026-01-22T10:35:08.878+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53366","uuid":"f6bc81c6-31b0-48aa-87d7-17b158c6dcbd","connectionId":7,"connectionCount":7}}
+2026-01-22T10:35:11.5290983Z  {"t":{"$date":"2026-01-22T10:35:08.881+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn7","msg":"client metadata","attr":{"remote":"172.18.0.1:53366","client":"conn7","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5292941Z  {"t":{"$date":"2026-01-22T10:35:08.920+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn4","msg":"Connection ended","attr":{"remote":"172.18.0.1:53328","uuid":"8e61b457-751f-41f3-ae9e-c09b6b15434f","connectionId":4,"connectionCount":6}}
+2026-01-22T10:35:11.5294302Z  {"t":{"$date":"2026-01-22T10:35:08.921+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn7","msg":"Connection ended","attr":{"remote":"172.18.0.1:53366","uuid":"f6bc81c6-31b0-48aa-87d7-17b158c6dcbd","connectionId":7,"connectionCount":5}}
+2026-01-22T10:35:11.5295660Z  {"t":{"$date":"2026-01-22T10:35:08.921+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn6","msg":"Connection ended","attr":{"remote":"172.18.0.1:53352","uuid":"d6d3ef23-ad82-4eb5-a7c3-af97b77bcf8c","connectionId":6,"connectionCount":4}}
+2026-01-22T10:35:11.5297026Z  {"t":{"$date":"2026-01-22T10:35:08.922+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn5","msg":"Connection ended","attr":{"remote":"172.18.0.1:53342","uuid":"d074857b-fcf7-4808-9fc0-cb2be3d4398b","connectionId":5,"connectionCount":3}}
+2026-01-22T10:35:11.5298733Z  {"t":{"$date":"2026-01-22T10:35:09.031+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53374","uuid":"2c8eebee-5b09-44c4-ae5b-3da9c33422a9","connectionId":8,"connectionCount":4}}
+2026-01-22T10:35:11.5300627Z  {"t":{"$date":"2026-01-22T10:35:09.033+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn8","msg":"client metadata","attr":{"remote":"172.18.0.1:53374","client":"conn8","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5302459Z  {"t":{"$date":"2026-01-22T10:35:09.044+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53382","uuid":"9161b73f-f3f7-479c-8e0f-da30f635158f","connectionId":9,"connectionCount":5}}
+2026-01-22T10:35:11.5303880Z  {"t":{"$date":"2026-01-22T10:35:09.044+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53398","uuid":"adaac2a8-e265-4a8b-ad15-b30949d95917","connectionId":10,"connectionCount":6}}
+2026-01-22T10:35:11.5305687Z  {"t":{"$date":"2026-01-22T10:35:09.044+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn9","msg":"client metadata","attr":{"remote":"172.18.0.1:53382","client":"conn9","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5307907Z  {"t":{"$date":"2026-01-22T10:35:09.045+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn10","msg":"client metadata","attr":{"remote":"172.18.0.1:53398","client":"conn10","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5309856Z  {"t":{"$date":"2026-01-22T10:35:09.051+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53406","uuid":"97974fa0-a2b1-4f80-bc19-4e748254ff90","connectionId":11,"connectionCount":7}}
+2026-01-22T10:35:11.5311659Z  {"t":{"$date":"2026-01-22T10:35:09.052+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn11","msg":"client metadata","attr":{"remote":"172.18.0.1:53406","client":"conn11","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5313570Z  {"t":{"$date":"2026-01-22T10:35:09.056+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn8","msg":"Connection ended","attr":{"remote":"172.18.0.1:53374","uuid":"2c8eebee-5b09-44c4-ae5b-3da9c33422a9","connectionId":8,"connectionCount":6}}
+2026-01-22T10:35:11.5314934Z  {"t":{"$date":"2026-01-22T10:35:09.057+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn11","msg":"Connection ended","attr":{"remote":"172.18.0.1:53406","uuid":"97974fa0-a2b1-4f80-bc19-4e748254ff90","connectionId":11,"connectionCount":5}}
+2026-01-22T10:35:11.5316303Z  {"t":{"$date":"2026-01-22T10:35:09.057+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn10","msg":"Connection ended","attr":{"remote":"172.18.0.1:53398","uuid":"adaac2a8-e265-4a8b-ad15-b30949d95917","connectionId":10,"connectionCount":4}}
+2026-01-22T10:35:11.5317660Z  {"t":{"$date":"2026-01-22T10:35:09.057+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn9","msg":"Connection ended","attr":{"remote":"172.18.0.1:53382","uuid":"9161b73f-f3f7-479c-8e0f-da30f635158f","connectionId":9,"connectionCount":3}}
+2026-01-22T10:35:11.5319230Z  {"t":{"$date":"2026-01-22T10:35:09.322+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53410","uuid":"4e753beb-ea17-4141-95c3-f9ed6c2ddbdb","connectionId":12,"connectionCount":4}}
+2026-01-22T10:35:11.5321039Z  {"t":{"$date":"2026-01-22T10:35:09.325+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn12","msg":"client metadata","attr":{"remote":"172.18.0.1:53410","client":"conn12","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5322876Z  {"t":{"$date":"2026-01-22T10:35:09.336+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53416","uuid":"a8a2b31f-3e3a-45bd-95d5-1cd405e2116d","connectionId":13,"connectionCount":5}}
+2026-01-22T10:35:11.5324296Z  {"t":{"$date":"2026-01-22T10:35:09.336+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53432","uuid":"f5be17f1-d093-4de7-8087-78305685201e","connectionId":14,"connectionCount":6}}
+2026-01-22T10:35:11.5326107Z  {"t":{"$date":"2026-01-22T10:35:09.337+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn13","msg":"client metadata","attr":{"remote":"172.18.0.1:53416","client":"conn13","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5328283Z  {"t":{"$date":"2026-01-22T10:35:09.337+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn14","msg":"client metadata","attr":{"remote":"172.18.0.1:53432","client":"conn14","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5330201Z  {"t":{"$date":"2026-01-22T10:35:09.343+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.1:53444","uuid":"4eb54dd3-4512-4a86-af2d-73cfab64d85f","connectionId":15,"connectionCount":7}}
+2026-01-22T10:35:11.5332011Z  {"t":{"$date":"2026-01-22T10:35:09.344+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn15","msg":"client metadata","attr":{"remote":"172.18.0.1:53444","client":"conn15","negotiatedCompressors":[],"doc":{"driver":{"name":"nodejs|Mongoose","version":"4.17.2|6.13.8"},"platform":"Node.js v18.20.8, LE","os":{"name":"linux","architecture":"x64","version":"6.11.0-1018-azure","type":"Linux"}}}}
+2026-01-22T10:35:11.5333900Z  {"t":{"$date":"2026-01-22T10:35:09.349+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn12","msg":"Connection ended","attr":{"remote":"172.18.0.1:53410","uuid":"4e753beb-ea17-4141-95c3-f9ed6c2ddbdb","connectionId":12,"connectionCount":6}}
+2026-01-22T10:35:11.5335276Z  {"t":{"$date":"2026-01-22T10:35:09.350+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn15","msg":"Connection ended","attr":{"remote":"172.18.0.1:53444","uuid":"4eb54dd3-4512-4a86-af2d-73cfab64d85f","connectionId":15,"connectionCount":5}}
+2026-01-22T10:35:11.5336632Z  {"t":{"$date":"2026-01-22T10:35:09.351+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn14","msg":"Connection ended","attr":{"remote":"172.18.0.1:53432","uuid":"f5be17f1-d093-4de7-8087-78305685201e","connectionId":14,"connectionCount":4}}
+2026-01-22T10:35:11.5337996Z  {"t":{"$date":"2026-01-22T10:35:09.351+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn13","msg":"Connection ended","attr":{"remote":"172.18.0.1:53416","uuid":"a8a2b31f-3e3a-45bd-95d5-1cd405e2116d","connectionId":13,"connectionCount":3}}
+2026-01-22T10:35:11.5339455Z  {"t":{"$date":"2026-01-22T10:35:09.383+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn3","msg":"Connection ended","attr":{"remote":"172.18.0.1:59296","uuid":"1d7b6fdd-d7f5-483a-b365-08765d751649","connectionId":3,"connectionCount":2}}
+2026-01-22T10:35:11.5340715Z  {"t":{"$date":"2026-01-22T10:35:09.383+00:00"},"s":"I",  "c":"-",        "id":20883,   "ctx":"conn1","msg":"Interrupted operation as its client disconnected","attr":{"opId":456}}
+2026-01-22T10:35:11.5341867Z  {"t":{"$date":"2026-01-22T10:35:09.384+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn2","msg":"Connection ended","attr":{"remote":"172.18.0.1:59294","uuid":"900d966b-bdc9-45fe-a482-a1a808a7e996","connectionId":2,"connectionCount":1}}
+2026-01-22T10:35:11.5343468Z  {"t":{"$date":"2026-01-22T10:35:09.384+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn1","msg":"Connection ended","attr":{"remote":"172.18.0.1:59284","uuid":"81d935e4-56ef-4efe-91b4-b6e2ee017cb0","connectionId":1,"connectionCount":0}}
+2026-01-22T10:35:11.5350201Z Stop and remove container: b5abc6ceb6e2456692a00ac34d54bb5f_mongo6_e72d42
+2026-01-22T10:35:11.5354864Z ##[command]/usr/bin/docker rm --force 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:35:13.9014508Z 0ba8eefdd79b1a7a4d4b2e6cead104f832bd6cbc34be5bc827948818a3390f1f
+2026-01-22T10:35:13.9044379Z Remove container network: github_network_a6d060531d2742078ae263f23813f4f2
+2026-01-22T10:35:13.9049002Z ##[command]/usr/bin/docker network rm github_network_a6d060531d2742078ae263f23813f4f2
+2026-01-22T10:35:14.0257005Z github_network_a6d060531d2742078ae263f23813f4f2
+2026-01-22T10:35:14.0315779Z Cleaning up orphan processes

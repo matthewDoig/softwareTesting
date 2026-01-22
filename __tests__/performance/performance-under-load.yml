@@ -1,0 +1,89 @@
+config:
+  target: "http://localhost:3000"
+  processor: "./performance-helper.js"
+
+  phases:
+    - duration: 10
+      arrivalRate: 10
+      name: "load"
+
+  plugins:
+    metrics-by-endpoint:
+      useOnlyRequestNames: true
+
+  ensure:
+    thresholds:
+      - http.response_time.p95: 800
+      - http.errors.rate: 0.01
+
+scenarios:
+  - name: "Check API"
+    flow:
+      - get:
+          name: "health"
+          url: "/"
+
+  - name: "Register then login then order lifecycle"
+    flow:
+      - post:
+          name: "register"
+          url: "/register"
+          beforeRequest: generateSignupData
+          json:
+            name: "{{ name }}"
+            email: "{{ email }}"
+            password: "{{ password }}"
+            role: "{{ role }}"
+            address: "{{ address }}"
+
+      - post:
+          name: "login"
+          url: "/login"
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+          capture:
+            - json: "$.accessToken"
+              as: "accessToken"
+
+      - post:
+          name: "place-order"
+          url: "/order"
+          beforeRequest: generateOrderData
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            type: "{{ type }}"
+            description: "{{ description }}"
+          capture:
+            - json: "$._id"
+              as: "orderID"
+
+      - get:
+          name: "users"
+          url: "/users"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+
+      - get:
+          name: "orders"
+          url: "/orders/all"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+
+      - put:
+          name: "update-order"
+          url: "/order"
+          beforeRequest: generateUpdatedOrderData
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            _id: "{{ orderID }}"
+            type: "{{ type }}"
+            description: "{{ description }}"
+
+      - delete:
+          name: "delete-order"
+          url: "/order/{{ orderID }}"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"

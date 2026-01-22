@@ -12,7 +12,11 @@
     "test-api-generic": "DOTENV_CONFIG_PATH=.env jest --setupFiles dotenv/config -- __tests__/api/api.users-generic.test.js --forceExit",
     "test": "DOTENV_CONFIG_PATH=.env jest --setupFiles dotenv/config  --forceExit && node db-cleanup.js",
     "performance": "artillery run __tests__/performance/performance-test.yml --output performance.json && node db-cleanup.js",
-    "report": "artillery report --output performance.html performance.json"
+    "report": "artillery report --output performance.html performance.json",
+    "performance:load": "npx artillery run __tests__/performance/performance-under-load.yml --output evidence/performance-under-load.json && node summarize-performance.js evidence/performance-under-load.json evidence/performance-under-load-summary.md && node db-cleanup.js",
+    "perf": "npx artillery run  __tests__/performance/performance-under-load.yml",
+    "perf:raw": "npx artillery run  __tests__/performance/performance-under-load.yml --output perf-raw.json",
+    "perf:report": "npx artillery report perf-raw.json --output perf-report.html"
   },
   "keywords": [
     "software",
@@ -31,13 +35,16 @@
     "dotenv": "latest",
     "express": "^4.19.2",
     "express-flash": "latest",
-    "jsonwebtoken": "latest",
     "express-jwt": "^8.4.1",
     "express-session": "latest",
     "express-validator": "latest",
     "jest": "latest",
     "jest-measure": "latest",
+    "jsonwebtoken": "latest",
     "jwks-rsa": "latest",
     "mongoose": "^6.10.0"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.27"
   }
 }

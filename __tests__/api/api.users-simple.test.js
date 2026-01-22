@@ -103,6 +103,52 @@ describe("Simple User Tests", () => {
     expect(data.type).toEqual("Box1");
     expect(data.description).toEqual("{Test Order Updated}");
   });
+   //added tests for invalid box type
+  it("should reject an invalid box type", async () => {
+
+    // Insert Order with wrong type.
+    await axios.post(prepare("/order"), {
+      "type": "Box3",
+      "description": "{Test Order}"
+    }, simpleConfig).catch(error => {
+      expect(error.response.status).toEqual(400);
+    }
+    );
+  });
+   it("should reject an invalid box type", async () => {
+
+    // Insert Order with nulll type.
+    await axios.post(prepare("/order"), {
+      "type": null,
+      "description": "{Test Order}"
+    }, simpleConfig).catch(error => {
+      expect(error.response.status).toEqual(400);
+    }
+    );
+  });
+
+   it("should reject an invalid box type", async () => {
+
+    // Insert Order with missing type.
+    await axios.post(prepare("/order"), {
+      "description": "{Test Order}"
+    }, simpleConfig).catch(error => {
+      expect(error.response.status).toEqual(400);
+    }
+    );
+  });
+   it("should reject an invalid box type", async () => {
+
+    // Insert Order with wrong type of value for type.
+    await axios.post(prepare("/order"), {
+      "type": 123,
+      "description": "{Test Order}"
+    }, simpleConfig).catch(error => {
+      expect(error.response.status).toEqual(400);
+    }
+    );
+  });
+  //end of my added invalid box type tests
 
 
   it("should add, then delete an order", async () => {

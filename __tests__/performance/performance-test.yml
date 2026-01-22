@@ -14,7 +14,7 @@ config:
       # Group metrics by request name rather than URL.
       # To focus per-scenario, set this to false.
       useOnlyRequestNames: true
- 
+
 scenarios:
   - name: "Check API"
     flow:
@@ -51,7 +51,7 @@ scenarios:
           url: "/order"
           beforeRequest: generateOrderData
           headers:
-            Authorization: 'Bearer {{ accessToken }}'
+            Authorization: "Bearer {{ accessToken }}"
           json:
             type: "{{ type }}"
             description: "{{ description }}"
@@ -63,25 +63,25 @@ scenarios:
       - get:
           url: "/users"
           headers:
-            Authorization: 'Bearer {{ accessToken }}'
+            Authorization: "Bearer {{ accessToken }}"
 
       - get:
           url: "/orders"
           headers:
-            Authorization: 'Bearer {{ accessToken }}'
+            Authorization: "Bearer {{ accessToken }}"
 
       # Modification/Deletion Actions.
       - put:
           url: "/order"
           beforeRequest: generateUpdatedOrderData
           headers:
-            Authorization: 'Bearer {{ accessToken }}'
+            Authorization: "Bearer {{ accessToken }}"
           json:
             _id: "{{ orderID }}"
             type: "{{ type }}"
             description: "{{ description }}"
-       
+
       - delete:
           url: "/order/{{ orderID }}"
           headers:
-            Authorization: 'Bearer {{ accessToken }}'
+            Authorization: "Bearer {{ accessToken }}"
